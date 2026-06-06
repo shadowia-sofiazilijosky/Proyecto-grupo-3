@@ -1,18 +1,13 @@
-import { NavLink, Outlet } from "react-router";
-import { ROUTES } from "@/shared/components/layout/utils/routes"
+import { Outlet } from "react-router";
+import Header from "./components/header/header/Header";
+import Footer from "./components/header/footer/Footer";
 
 export const RootLayout = () => {
   return (
     <div>
-      <header>
-        <nav>
-          <NavLink to={ROUTES.HOME}>Home </NavLink>
-          <NavLink to={ROUTES.CREATECARDS}>Creá cards </NavLink>
-          <NavLink to={ROUTES.LISTCARDS}>Cards </NavLink>
-        </nav>
-      </header>
+      <Header/>
       <Outlet />
-      <footer>Footer</footer>
+      <Footer/>
     </div>
   )
 }

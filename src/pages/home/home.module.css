@@ -1,0 +1,160 @@
+/* ─── Main ───────────────────────────────────────────────────────────────── */
+.main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ─── Hero ───────────────────────────────────────────────────────────────── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #2a6b5e;
+}
+
+.heading {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: normal;
+  line-height: 1.2;
+  color: #1a1a18;
+  letter-spacing: -0.01em;
+}
+
+.heading em {
+  font-style: italic;
+  color: #2a6b5e;
+}
+
+.sub {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #7a7a72;
+  max-width: 420px;
+  line-height: 1.6;
+}
+
+/* ─── Divider ────────────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: #e8e4dc;
+  position: relative;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 64px;
+  height: 1px;
+  background: #2a6b5e;
+}
+
+/* ─── Cards grid ─────────────────────────────────────────────────────────── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1px #e8e4dc;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 0 1px #b8d9d4;
+}
+
+.cardNum {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  color: #e8e4dc;
+  line-height: 1;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1a1a18;
+}
+
+.cardText {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #5a5a52;
+}
+
+/* ─── Quote ──────────────────────────────────────────────────────────────── */
+.quote {
+  margin: 0;
+  padding: 28px 32px;
+  background: #f7f5f0;
+  border-radius: 12px;
+  border-left: 3px solid #2a6b5e;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quoteText {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #1a1a18;
+}
+
+.quoteCite {
+  font-family: "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2a6b5e;
+  font-style: normal;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .main {
+    padding: 40px 16px 60px;
+    gap: 40px;
+  }
+}
