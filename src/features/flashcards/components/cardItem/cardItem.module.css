@@ -1,0 +1,208 @@
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+:root {
+  --fc-bg:          #f7f5f0;
+  --fc-surface:     #ffffff;
+  --fc-border:      #e8e4dc;
+  --fc-accent:      #2a6b5e;
+  --fc-accent-soft: #e8f2f0;
+  --fc-text:        #1a1a18;
+  --fc-text-muted:  #7a7a72;
+  --fc-hit:         #2a6b5e;
+  --fc-miss:        #c05a3a;
+  --fc-radius:      12px;
+  --fc-shadow:      0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--fc-border);
+  --fc-font-display: Georgia, "Times New Roman", serif;
+  --fc-font-body:    "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
+  --fc-transition:  0.2s ease;
+}
+
+/* ─── Card Container ─────────────────────────────────────────────────────── */
+.card {
+  list-style: none;
+  background: var(--fc-surface);
+  border-radius: var(--fc-radius);
+  box-shadow: var(--fc-shadow);
+  overflow: hidden;
+  font-family: var(--fc-font-body);
+  transition: box-shadow var(--fc-transition), transform var(--fc-transition);
+}
+
+.card:hover {
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.09),
+    0 0 0 1px var(--fc-accent);
+  transform: translateY(-2px);
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--fc-bg);
+  border-bottom: 1px solid var(--fc-border);
+}
+
+.topic {
+  font-family: var(--fc-font-display);
+  font-size: 0.78rem;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  color: var(--fc-accent);
+  text-transform: capitalize;
+}
+
+/* Difficulty badge */
+.difficulty {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 1.5px solid currentColor;
+}
+
+.difficulty_easy {
+  color: #2a7a4f;
+  background: #edf7f2;
+}
+
+.difficulty_medium {
+  color: #9a6c00;
+  background: #fdf7e3;
+}
+
+.difficulty_hard {
+  color: #b33a1e;
+  background: #fdf0ec;
+}
+
+/* ─── Body ───────────────────────────────────────────────────────────────── */
+.body {
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fc-text-muted);
+}
+
+.text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--fc-text);
+}
+
+.divider {
+  height: 1px;
+  background: var(--fc-border);
+  margin: 14px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 1px;
+  background: var(--fc-accent);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-top: 1px solid var(--fc-border);
+  background: var(--fc-bg);
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  gap: 14px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.statIcon {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.statHits   { color: var(--fc-hit); }
+.statMisses { color: var(--fc-miss); }
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.btn {
+  font-family: var(--fc-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: none;
+  border-radius: 7px;
+  padding: 7px 16px;
+  cursor: pointer;
+  transition:
+    background var(--fc-transition),
+    color var(--fc-transition),
+    box-shadow var(--fc-transition);
+}
+
+.btnEdit {
+  background: var(--fc-accent-soft);
+  color: var(--fc-accent);
+}
+
+.btnEdit:hover {
+  background: var(--fc-accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(42, 107, 94, 0.25);
+}
+
+/*
+  Para DeleteFlashcard: agregar las clases btn + btnDelete al botón interno.
+*/
+.btnDelete {
+  background: transparent;
+  color: var(--fc-miss);
+  border: 1.5px solid #e8cec8;
+}
+
+.btnDelete:hover {
+  background: var(--fc-miss);
+  color: #fff;
+  border-color: var(--fc-miss);
+  box-shadow: 0 2px 8px rgba(192, 90, 58, 0.25);
+}

@@ -1,0 +1,180 @@
+/* ─── Form Container ─────────────────────────────────────────────────────── */
+.form {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1px #e8e4dc;
+  overflow: hidden;
+  font-family: "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.formHeader {
+  padding: 20px 24px 18px;
+  background: #f7f5f0;
+  border-bottom: 1px solid #e8e4dc;
+}
+
+.formTitle {
+  margin: 0 0 3px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: normal;
+  font-style: italic;
+  color: #1a1a18;
+  letter-spacing: 0.01em;
+}
+
+.formSubtitle {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #7a7a72;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Fields wrapper ─────────────────────────────────────────────────────── */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+}
+
+/* Fila con dos campos lado a lado */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ─── Individual field ───────────────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7a7a72;
+}
+
+/* ─── Inputs base ────────────────────────────────────────────────────────── */
+.input,
+.textarea,
+.select {
+  font-family: "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
+  font-size: 0.9rem;
+  color: #1a1a18;
+  background: #f7f5f0;
+  border: 1.5px solid #e8e4dc;
+  border-radius: 8px;
+  padding: 10px 13px;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #b8b5ae;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: #2a6b5e;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(42, 107, 94, 0.1);
+}
+
+/* ─── Textarea ───────────────────────────────────────────────────────────── */
+.textarea {
+  resize: vertical;
+  min-height: 88px;
+  line-height: 1.55;
+}
+
+/* ─── Select ─────────────────────────────────────────────────────────────── */
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7a72' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* ─── Submit button ──────────────────────────────────────────────────────── */
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  font-family: "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #2a6b5e;
+  border: none;
+  border-top: 1px solid #e8e4dc;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit:hover {
+  background: #1f5247;
+  box-shadow: 0 -2px 12px rgba(42, 107, 94, 0.15) inset;
+}
+
+.submit:active {
+  background: #194038;
+}
+
+.submitIcon {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-top: -1px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── EditFlashcard extras ───────────────────────────────────────────────── */
+
+/* Variante del botón submit para edición — tono ámbar en lugar de verde */
+.submitEdit {
+  background: #7a5c2a;
+}
+
+.submitEdit:hover {
+  background: #5e4520;
+  box-shadow: 0 -2px 12px rgba(122, 92, 42, 0.15) inset;
+}
+
+.submitEdit:active {
+  background: #4a3418;
+}
+
+/* Mensaje de error cuando no se encuentra la card */
+.notFound {
+  font-family: "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
+  font-size: 0.85rem;
+  color: #7a7a72;
+  font-style: italic;
+  text-align: center;
+  padding: 24px;
+  margin: 0;
+}
