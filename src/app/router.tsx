@@ -3,6 +3,7 @@ import { RootLayout } from "@/shared/components/layout/RootLayout";
 import { HomePage } from "@/pages/home/HomePage";
 import { CreateCards } from '@/pages/CreateCards';
 import ListCards from '@/pages/ListCards';
+import StudyCards from '@/pages/flashcards/StudyCards';
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +13,7 @@ export const router = createBrowserRouter([
             { index: true, Component: HomePage },
             { path: "createCards", Component: CreateCards },
             { path: "listCards", Component: ListCards },
+            { path: "studyCards", Component: StudyCards },
         ],
     },
 ]);
