@@ -8,6 +8,12 @@
   margin: 0;
   text-align: center;
 }
-.titleList {
-  padding: 0px 30px;
+.titlelist {
+  margin: 0px 30px;
+  justify-content: left;
 }    
+@media (max-width: 680px) {
+    .titlelist {
+    margin:0px 10px;
+    }
+}

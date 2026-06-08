@@ -206,6 +206,14 @@
   border-color: var(--fc-miss);
   box-shadow: 0 2px 8px rgba(192, 90, 58, 0.25);
 }
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 26px; /* separación entre cards */
+  padding:20px;
+}
 @media (max-width: 480px) {
-  
+.list {
+  padding:5px;
+}
 }
