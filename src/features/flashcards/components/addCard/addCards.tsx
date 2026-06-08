@@ -33,7 +33,13 @@ export function CreateFlashcard() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    addFlashcard({ ...values, hits: 0, misses: 0 });
+
+    addFlashcard({
+      ...values,
+      hits: 0,
+      misses: 0
+    });
+
     setValues(DEFAULT_VALUES);
   }
 
