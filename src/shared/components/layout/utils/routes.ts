@@ -3,4 +3,5 @@ export const ROUTES = {
     CREATECARDS: "/createCards",
     LISTCARDS: "/listCards",
     STUDYCARDS:"/StudyCards",
+    QUIZ: "/Quiz",
 } as const;

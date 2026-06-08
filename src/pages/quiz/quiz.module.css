@@ -1,0 +1,96 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 🔹 CARD */
+
+.cardWrapper {
+  width: 820px;
+  height: 320px;
+  perspective: 1000px;
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px solid black;
+  border-radius: 12px;
+  text-align: center;
+  padding: 15px;
+}
+
+.front {
+  background: white;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+/* 🔹 colores dinámicos */
+.correct {
+  background: #c8f7c5;
+}
+
+.incorrect {
+  background: #f7c5c5;
+}
+
+/* 🔹 GRID OPCIONES */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 400px;
+  margin-top: 10px;
+}
+
+.optionButton:hover {
+  background: #f0f0f0;
+}
+.correct {
+  background: #c8f7c5;
+}
+
+.incorrect {
+  background: #f7c5c5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 400px;
+  margin-top: 10px;
+}
+
+.optionButton {
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: white;
+}

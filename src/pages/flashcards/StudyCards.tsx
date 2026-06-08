@@ -94,7 +94,7 @@ const StudyCards = () => {
                                     {card.question}
                                 </div>
 
-                                <div className={`${style.cardFace} ${style.back}`}>
+                                <div className={`${style.cardFace} ${style.back} ${style[filter]}`}>
                                     {card.answer}
                                 </div>
                             </div>

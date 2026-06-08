@@ -45,6 +45,16 @@ const Header = () => {
           >
             Estudiar
           </NavLink>
+
+          <NavLink
+            to={ROUTES.QUIZ}
+            className={({ isActive }) =>
+              `${style.link} ${isActive ? style.linkActive : ""}`
+            }
+          >
+            Quiz
+          </NavLink>
+
         </nav>
       </div>
     </header>

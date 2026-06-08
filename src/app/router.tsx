@@ -4,6 +4,7 @@ import { HomePage } from "@/pages/home/HomePage";
 import { CreateCards } from '@/pages/CreateCards';
 import ListCards from '@/pages/ListCards';
 import StudyCards from '@/pages/flashcards/StudyCards';
+import Quiz from '@/pages/quiz/Quiz';
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
             { path: "createCards", Component: CreateCards },
             { path: "listCards", Component: ListCards },
             { path: "studyCards", Component: StudyCards },
+            { path: "quiz", Component: Quiz },
         ],
     },
 ]);
