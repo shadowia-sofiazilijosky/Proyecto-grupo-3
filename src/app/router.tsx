@@ -3,7 +3,7 @@ import { RootLayout } from "@/shared/components/layout/RootLayout";
 import { HomePage } from "@/pages/home/HomePage";
 import { CreateCards } from '@/pages/CreateCards';
 import ListCards from '@/pages/ListCards';
-import StudyCards from '@/pages/flashcards/StudyCards';
+import StudyCards from '@/features/flashcards/components/study/StudyCards';
 import Quiz from '@/pages/quiz/Quiz';
 
 export const router = createBrowserRouter([
