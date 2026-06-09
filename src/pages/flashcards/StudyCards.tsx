@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useFlashcardStore } from "../../../../features/flashcards/store";
+import { useFlashcardStore } from "../../features/flashcards/store";
 import styles from "../../../../pages/flashcards/studycards.module.css";
-import Sidebar from "./Sidebar";
-import StudyMain from "./StudyMain";
+import Sidebar from "./components/sidebar/Sidebar";
+import StudyMain from "./components/studymain/StudyMain";
 
 const StudyCards = () => {
   const flashcards = useFlashcardStore((s) => s.flashcards);

@@ -1,5 +1,4 @@
 .container {
-  
   display: flex;
   justify-content: center;/* 🔥 centra TODO */
 }
@@ -34,41 +33,6 @@ flex-direction: column;
 
   margin: 0; /* 🔥 eliminar margen raro */
 }
-.primary {
-  display: flex;
-  background: #2a7cff;
-  color: white;
-  padding: 12px 18px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.secondary {
-  display: flex;
-  background: #eee;
-  color: #333;
-  padding: 12px 18px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.reviewList {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* 🔥 separación entre cada reviewItem */
-}
-
-/* 🔹 colores dinámicos */
-.correct {
-  background: #c8f7c5;
-  border: 2px solid #4caf50;
-}
-
-.incorrect {
-  background: #f7c5c5;
-  border: 2px solid #f44336;
-}
 
 /* 🔹 GRID OPCIONES */
 
@@ -82,14 +46,6 @@ flex-direction: column;
 
 .optionButton:hover {
   background: #f0f0f0;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  width: 400px;
-  margin-top: 10px;
 }
 
 .optionButton {
@@ -134,110 +90,9 @@ flex-direction: column;
   line-height: 1.5;
   margin:0px 5px;
 }
-/* 🔥 RESULTADO */
-
-.resultBox {
-  max-width: 600px;
-  margin-top:7px;
-  padding: 30px;
-  border-radius: 20px;
-
-  border: 1px solid rgba(180, 58, 58, 0.1);
-
-  background: linear-gradient(135deg, #ffffff, #8fb8ff);
-
-  box-shadow: 
-    0 10px 30px rgba(0,0,0,0.08),
-    inset 0 0 0 1px rgba(255,255,255,0.5);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.resultButtons {
-  
-  width: 100%;
-  display: flex;
-  justify-content: space-between; /* 🔥 los separa */
-  margin-top: 25px;
-
-}
-
-.resultButtons button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(42,124,255,0.3);
-}
-
-.resultContent {
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
-}
-
-/* 🔹 GRID */
-.resultGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-
-  margin-top: 20px;
-}
-
-/* 🔹 BLOQUES */
-.resultGrid div {
-  background: #f8f8f8;
-  padding: 15px;
-  border-radius: 12px;
-}
-
-/* 🔹 EL GRANDE (porcentaje) */
-.fullWidth {
-  grid-column: span 2;
-  background: #eef6ff;
-}
-
-/* 🔹 TEXTOS */
-.resultGrid p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.resultGrid h3 {
-  margin: 5px 0 0;
-  font-size: 1.4rem;
-}
-
-.resultGrid h1 {
-  margin: 10px 0 0;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #2a7cff;
-
-  text-shadow: 0 2px 10px rgba(42, 124, 255, 0.2);
-}
 
 /* Celular */
 @media (max-width: 480px) {
-
-  .cardWrapper {
-    height: 360px;
-    width: 95%;
-    max-width: 400px;
-  }
 
   .optionsContainer {
     grid-template-columns: 1fr;
@@ -267,7 +122,4 @@ flex-direction: column;
     margin-top: 10px;
   }
 
-.resultBox {
-  max-width: 300px;
-}
 }

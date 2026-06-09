@@ -1,5 +1,6 @@
 import styles from "./quiz.module.css";
-
+import result from "./result.module.css";
+import button from "./button.module.css";
 type Props = {
   score: number;
   total: number;
@@ -35,15 +36,15 @@ const Result = ({ score, total, onReview, onRetry }: Props) => {
 
         {/* RESULT BOX */}
         <div
-          className={styles.resultBox}
+          className={result.resultBox}
           style={{
             background: `linear-gradient(135deg, #ffffff, ${getColor()})`
           }}
         >
-          <div className={styles.resultContent}>
+          <div className={result.resultContent}>
             <h2>Resultado 🎯</h2>
 
-            <div className={styles.resultGrid}>
+            <div className={result.resultGrid}>
               <div>
                 <p>Progreso</p>
                 <h3>{total} / {total}</h3>
@@ -54,19 +55,19 @@ const Result = ({ score, total, onReview, onRetry }: Props) => {
                 <h3>{score} / {total}</h3>
               </div>
 
-              <div className={styles.fullWidth}>
+              <div className={result.fullWidth}>
                 <p>Porcentaje</p>
                 <h1>{percentage}%</h1>
               </div>
             </div>
           </div>
 
-          <div className={styles.resultButtons}>
-            <button className={styles.primary} onClick={onReview}>
+          <div className={result.resultButtons}>
+            <button className={button.primary} onClick={onReview}>
               Ver respuestas 👀
             </button>
 
-            <button className={styles.secondary} onClick={onRetry}>
+            <button className={button.secondary} onClick={onRetry}>
               Reintentar 🔁
             </button>
           </div>

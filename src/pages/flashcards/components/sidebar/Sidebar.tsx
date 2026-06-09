@@ -1,5 +1,6 @@
 import styles from "../../../../pages/flashcards/studycards.module.css";
 import difficulties from "../../../../shared/styles/difficulty.module.css"
+import sidebar from "../../../../pages/flashcards/sidebar.module.css";
 type Props = {
   filter: string;
   setFilter: (val: string) => void;
@@ -22,7 +23,7 @@ const Sidebar = ({
   setMenuOpen
 }: Props) => {
   return (
-    <aside className={`${styles.sidebar} ${menuOpen ? styles.open : ""}`}>
+    <aside className={`${sidebar.sidebar} ${menuOpen ? sidebar.open : ""}`}>
       <h3>Filtrar</h3>
 
       <select
@@ -36,12 +37,12 @@ const Sidebar = ({
         <option value="hard">Difícil</option>
       </select>
 
-      <div className={styles.list}>
+      <div className={sidebar.list}>
         {filteredCards.map((c, i) => (
           <div
             key={i}
             className={`
-              ${styles.listItem}
+              ${sidebar.listItem}
               ${difficulties[c.difficulty]}
               ${i === currentIndex ? styles.active : ""}
             `}

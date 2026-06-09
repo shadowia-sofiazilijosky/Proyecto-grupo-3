@@ -1,0 +1,16 @@
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 🔥 separación entre cada reviewItem */
+}
+
+/* 🔹 colores dinámicos */
+.correct {
+  background: #c8f7c5;
+  border: 2px solid #4caf50;
+}
+
+.incorrect {
+  background: #f7c5c5;
+  border: 2px solid #f44336;
+}

@@ -1,5 +1,6 @@
 import styles from "./quiz.module.css";
 import cardStyles from "../../shared/styles/card.module.css";
+import review from "./review.module.css";
 
 type Props = {
   question: string;
@@ -44,8 +45,8 @@ const QuestionCard = ({
         <div
           className={`${cardStyles.cardFace} ${styles.cardFace} ${cardStyles.back} ${
             selected === answer
-              ? styles.correct
-              : styles.incorrect
+              ? review.correct
+              : review.incorrect
           }`}
         >
          <div className={styles.cardContent}>

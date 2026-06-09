@@ -87,28 +87,40 @@ const Quiz = () => {
   }
 
   if (showReview) {
-    return <Review answers={userAnswers} onBack={() => setShowReview(false)} />;
-  }
+  return (
+    <div className={styles.container}>
+      <div className={styles.main}>
+        <Review
+          answers={userAnswers}
+          onBack={() => setShowReview(false)}
+        />
+      </div>
+    </div>
+  );
+}
 
-  if (finished) {
-    return (
-      <Result
-        score={score}
-        total={flashcards.length}
-        onReview={() => setShowReview(true)}
-        onRetry={() => {
-          setCurrentIndex(0);
-          setFlipped(false);
-          setSelectedOption(null);
-          setScore(0);
-          setFinished(false);
-          setUserAnswers([]);
-          setShowReview(false);
-        }}
-      />
-    );
-  }
-
+if (finished) {
+  return (
+    <div className={styles.container}>
+      <div className={styles.main}>
+        <Result
+          score={score}
+          total={flashcards.length}
+          onReview={() => setShowReview(true)}
+          onRetry={() => {
+            setCurrentIndex(0);
+            setFlipped(false);
+            setSelectedOption(null);
+            setScore(0);
+            setFinished(false);
+            setUserAnswers([]);
+            setShowReview(false);
+          }}
+        />
+      </div>
+    </div>
+  );
+}
   return (
     <div className={styles.container}>
       <div className={styles.main}>
