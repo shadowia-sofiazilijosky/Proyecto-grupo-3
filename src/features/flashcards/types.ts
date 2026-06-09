@@ -2,7 +2,6 @@ export const DIFFICULTIES = [
   "easy",
   "medium",
   "hard",
-  "very-hard",
 ] as const;
 
 export type Difficulty =

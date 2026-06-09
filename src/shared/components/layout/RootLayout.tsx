@@ -4,11 +4,15 @@ import Footer from "./components/header/footer/Footer";
 
 export const RootLayout = () => {
   return (
-    <div>
-      <Header/>
-      <Outlet />
-      <Footer/>
+    <div className="page">
+      <Header />
+
+      <main className="content">
+        <Outlet />
+      </main>
+
+      <Footer />
     </div>
-  )
+  );
 }
 

@@ -1,8 +1,8 @@
-import style from "../../../../pages/flashcards/studycards.module.css";
+import styles from "../../../../pages/flashcards/studycards.module.css";
 
 type Props = {
   hasCards: boolean;
-  index: number;
+  currentIndex: number;
   total: number;
   card: any;
   showAnswer: boolean;
@@ -12,7 +12,7 @@ type Props = {
 
 const StudyMain = ({
   hasCards,
-  index,
+  currentIndex,
   total,
   card,
   showAnswer,
@@ -20,27 +20,27 @@ const StudyMain = ({
   filter
 }: Props) => {
   return (
-    <main className={style.main}>
+    <main className={styles.main}>
       <h2>Modo Estudio</h2>
 
       {hasCards ? (
         <>
           <p>
-            {index + 1} / {total}
+            {currentIndex + 1} / {total}
           </p>
 
-          <div className={style.cardWrapper} onClick={handleClick}>
+          <div className={styles.cardWrapper} onClick={handleClick}>
             <div
-              className={`${style.cardInner} ${
-                showAnswer ? style.flipped : ""
+              className={`${styles.cardInner} ${
+                showAnswer ? styles.flipped : ""
               }`}
             >
-              <div className={`${style.cardFace} ${style.front}`}>
+              <div className={`${styles.cardFace} ${styles.front}`}>
                 {card.question}
               </div>
 
               <div
-                className={`${style.cardFace} ${style.back} ${style[filter]}`}
+                className={`${styles.cardFace} ${styles.back} ${styles[filter]}`}
               >
                 {card.answer}
               </div>
@@ -54,7 +54,7 @@ const StudyMain = ({
           </p>
         </>
       ) : (
-        <div className={style.emptyBox}>
+        <div className={styles.emptyBox}>
           <h3>No hay tarjetas</h3>
           <p>para este nivel 😥</p>
         </div>

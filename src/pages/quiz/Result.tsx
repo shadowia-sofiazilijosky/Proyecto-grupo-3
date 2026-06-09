@@ -1,4 +1,4 @@
-import style from "./quiz.module.css";
+import styles from "./quiz.module.css";
 
 type Props = {
   score: number;
@@ -8,24 +8,24 @@ type Props = {
 };
 
 const Result = ({ score, total, onReview, onRetry }: Props) => {
-  const porcentaje = Math.round((score / total) * 100);
+  const percentage = Math.round((score / total) * 100);
 
   const getColor = () => {
-    if (porcentaje >= 60) {
-      const ratio = (porcentaje - 60) / 40;
+    if (percentage >= 60) {
+      const ratio = (percentage - 60) / 40;
       return `hsl(${120 - (1 - ratio) * 40}, 70%, 75%)`;
     } else {
-      const ratio = porcentaje / 60;
+      const ratio = percentage / 60;
       return `hsl(${0 + ratio * 40}, 70%, 75%)`;
     }
   };
 
   return (
-    <div className={style.container}>
-      <div className={style.main}>
+    <div className={styles.container}>
+      <div className={styles.main}>
 
         {/* HEADER */}
-        <div className={style.header}>
+        <div className={styles.header}>
           <h1>Quiz🧠</h1>
           <p>
             Estos quiz son para practicar tu memoria y ver cómo te va recordando
@@ -35,15 +35,15 @@ const Result = ({ score, total, onReview, onRetry }: Props) => {
 
         {/* RESULT BOX */}
         <div
-          className={style.resultBox}
+          className={styles.resultBox}
           style={{
             background: `linear-gradient(135deg, #ffffff, ${getColor()})`
           }}
         >
-          <div className={style.resultContent}>
+          <div className={styles.resultContent}>
             <h2>Resultado 🎯</h2>
 
-            <div className={style.resultGrid}>
+            <div className={styles.resultGrid}>
               <div>
                 <p>Progreso</p>
                 <h3>{total} / {total}</h3>
@@ -54,19 +54,19 @@ const Result = ({ score, total, onReview, onRetry }: Props) => {
                 <h3>{score} / {total}</h3>
               </div>
 
-              <div className={style.fullWidth}>
+              <div className={styles.fullWidth}>
                 <p>Porcentaje</p>
-                <h1>{porcentaje}%</h1>
+                <h1>{percentage}%</h1>
               </div>
             </div>
           </div>
 
-          <div className={style.resultButtons}>
-            <button className={style.primary} onClick={onReview}>
+          <div className={styles.resultButtons}>
+            <button className={styles.primary} onClick={onReview}>
               Ver respuestas 👀
             </button>
 
-            <button className={style.secondary} onClick={onRetry}>
+            <button className={styles.secondary} onClick={onRetry}>
               Reintentar 🔁
             </button>
           </div>

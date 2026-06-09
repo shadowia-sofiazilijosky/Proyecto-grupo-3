@@ -9,7 +9,7 @@ interface FlashcardState {
   addFlashcard: (card: Omit<Flashcard, "id">) => void;
   updateFlashcard: (id: string, updates: Partial<Omit<Flashcard, "id">>) => void;
   removeFlashcard: (id: string) => void;
-  registrarResultado: (id: string, isCorrect: boolean) => void;
+  recordResult: (id: string, isCorrect: boolean) => void;
 }
 
 export const useFlashcardStore = create<FlashcardState>()(
@@ -39,7 +39,7 @@ export const useFlashcardStore = create<FlashcardState>()(
         set((state) => ({
           flashcards: state.flashcards.filter((card) => card.id !== id),
         })),
-      registrarResultado: (_id, _isCorrect) => {
+      recordResult: (_id, _isCorrect) => {
         // 🚧 D3 lo implementa
       },
     }),

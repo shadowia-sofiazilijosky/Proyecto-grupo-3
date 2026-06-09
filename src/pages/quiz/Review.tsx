@@ -1,4 +1,4 @@
-import style from "./quiz.module.css";
+import styles from "./quiz.module.css";
 
 type Answer = {
   question: string;
@@ -14,13 +14,13 @@ type Props = {
 
 const Review = ({ answers, onBack }: Props) => {
   return (
-    <div className={style.container}>
-      <div className={style.main}>
-        <div className={style.resultBox}>
+    <div className={styles.container}>
+      <div className={styles.main}>
+        <div className={styles.resultBox}>
 
           <h2>Revisión de respuestas 📋</h2>
 
-          <div className={style.reviewList}>
+          <div className={styles.reviewList}>
             {answers.map((item, i) => (
               <div
                 key={i}>
@@ -39,7 +39,7 @@ const Review = ({ answers, onBack }: Props) => {
             ))}
           </div>
 
-          <button className={style.primary} onClick={onBack}>
+          <button className={styles.primary} onClick={onBack}>
             Volver ⬅
           </button>
 

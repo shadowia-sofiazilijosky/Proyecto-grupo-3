@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFlashcardStore } from "../../features/flashcards/store";
-import style from "./quiz.module.css";
+import styles from "./quiz.module.css";
 
 import Header from "./Header";
 import QuestionCard from "./QuestionCard";
@@ -8,127 +8,127 @@ import Result from "./Result";
 import Review from "./Review";
 
 type Answer = {
-    question: string;
-    correctAnswer: string;
-    userAnswer: string;
-    isCorrect: boolean;
+  question: string;
+  correctAnswer: string;
+  userAnswer: string;
+  isCorrect: boolean;
 };
 
 const Quiz = () => {
-    const flashcards = useFlashcardStore((s) => s.flashcards);
-    const registrarResultado = useFlashcardStore((s) => s.registrarResultado);
+  const flashcards = useFlashcardStore((s) => s.flashcards);
+  const recordResult = useFlashcardStore((s) => s.recordResult);
 
-    const [index, setIndex] = useState(0);
-    const [flipped, setFlipped] = useState(false);
-    const [selected, setSelected] = useState<string | null>(null);
-    const [score, setScore] = useState(0);
-    const [finished, setFinished] = useState(false);
-    const [showReview, setShowReview] = useState(false);
-    const [answers, setAnswers] = useState<Answer[]>([]);
-    const [options, setOptions] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [flipped, setFlipped] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
+  const [showReview, setShowReview] = useState(false);
+  const [userAnswers, setUserAnswers] = useState<Answer[]>([]);
+  const [options, setOptions] = useState<string[]>([]);
 
-    const current = flashcards[index];
+  const currentFlashcard = flashcards[currentIndex];
 
-    useEffect(() => {
-        if (!current) return;
-        const newOptions = generateOptions();
-        setOptions(newOptions);
-    }, [current]);
+  useEffect(() => {
+    if (!currentFlashcard) return;
+    const newOptions = generateOptions();
+    setOptions(newOptions);
+  }, [currentFlashcard]);
 
-    const generateOptions = () => {
-        const answers = flashcards.map((c) => c.answer);
-        const incorrect = answers.filter((a) => a !== current.answer);
-        const shuffled = [...incorrect].sort(() => Math.random() - 0.5);
+  const generateOptions = () => {
+    const allAnswers = flashcards.map((c) => c.answer);
+    const incorrect = allAnswers.filter((a) => a !== currentFlashcard.answer);
+    const shuffled = [...incorrect].sort(() => Math.random() - 0.5);
 
-        const totalOptions = flashcards.length >= 4 ? 4 : 2;
+    const totalOptions = flashcards.length >= 4 ? 4 : 2;
 
-        const options = [current.answer, ...shuffled.slice(0, totalOptions - 1)];
-        return options.sort(() => Math.random() - 0.5);
-    };
+    const options = [currentFlashcard.answer, ...shuffled.slice(0, totalOptions - 1)];
+    return options.sort(() => Math.random() - 0.5);
+  };
 
-    const handleSelect = (option: string) => {
-        if (flipped) return;
+  const handleOptionSelect = (option: string) => {
+    if (flipped) return;
 
-        const isCorrect = option === current.answer;
+    const isCorrect = option === currentFlashcard.answer;
 
-        setSelected(option);
-        setFlipped(true);
+    setSelectedOption(option);
+    setFlipped(true);
 
-        if (isCorrect) {
-            setScore((prev) => prev + 1);
-        }
-
-        registrarResultado(current.id, isCorrect);
-
-        setAnswers((prev) => [
-            ...prev,
-            {
-                question: current.question,
-                correctAnswer: current.answer,
-                userAnswer: option,
-                isCorrect,
-            },
-        ]);
-
-        setTimeout(() => {
-            const next = index + 1;
-            if (next < flashcards.length) {
-                setIndex(next);
-                setFlipped(false);
-                setSelected(null);
-            } else {
-                setFinished(true);
-            }
-        }, 1200);
-    };
-
-    // ❗ MISMO FLUJO
-
-    if (flashcards.length < 4) {
-        return <p>Necesitás al menos 4 tarjetas 😅</p>;
+    if (isCorrect) {
+      setScore((prev) => prev + 1);
     }
 
-    if (showReview) {
-        return <Review answers={answers} onBack={() => setShowReview(false)} />;
-    }
+    recordResult(currentFlashcard.id, isCorrect);
 
-    if (finished) {
-        return (
-            <Result
-                score={score}
-                total={flashcards.length}
-                onReview={() => setShowReview(true)}
-                onRetry={() => {
-                    setIndex(0);
-                    setFlipped(false);
-                    setSelected(null);
-                    setScore(0);
-                    setFinished(false);
-                    setAnswers([]);
-                    setShowReview(false);
-                }}
-            />
-        );
-    }
+    setUserAnswers((prev) => [
+      ...prev,
+      {
+        question: currentFlashcard.question,
+        correctAnswer: currentFlashcard.answer,
+        userAnswer: option,
+        isCorrect,
+      },
+    ]);
 
+    setTimeout(() => {
+      const next = currentIndex + 1;
+      if (next < flashcards.length) {
+        setCurrentIndex(next);
+        setFlipped(false);
+        setSelectedOption(null);
+      } else {
+        setFinished(true);
+      }
+    }, 1200);
+  };
+
+  if (flashcards.length < 4) {
+    return <p>Necesitás al menos 4 tarjetas 😅</p>;
+  }
+
+  if (showReview) {
+    return <Review answers={userAnswers} onBack={() => setShowReview(false)} />;
+  }
+
+  if (finished) {
     return (
-        <div className={style.container}>
-  <div className={style.main}>
-    <Header />
+      <Result
+        score={score}
+        total={flashcards.length}
+        onReview={() => setShowReview(true)}
+        onRetry={() => {
+          setCurrentIndex(0);
+          setFlipped(false);
+          setSelectedOption(null);
+          setScore(0);
+          setFinished(false);
+          setUserAnswers([]);
+          setShowReview(false);
+        }}
+      />
+    );
+  }
 
-    <p className={style.progress}>{index + 1} / {flashcards.length}</p>
+  return (
+    <div className={styles.container}>
+      <div className={styles.main}>
+        <Header />
 
-    <QuestionCard
-      question={current.question}
-      answer={current.answer}
-      flipped={flipped}
-      selected={selected}
-      options={options}
-      handleSelect={handleSelect}
-    />
-  </div>
-  </div>
-);
+        <p className={styles.progress}>
+          {currentIndex + 1} / {flashcards.length}
+        </p>
+
+        <QuestionCard
+          question={currentFlashcard.question}
+          answer={currentFlashcard.answer}
+          flipped={flipped}
+          selected={selectedOption}
+          options={options}
+          handleSelect={handleOptionSelect}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Quiz;

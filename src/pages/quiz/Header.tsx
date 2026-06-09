@@ -1,7 +1,7 @@
-import style from "./quiz.module.css";
+import styles from "./quiz.module.css";
 
 const Header = () => (
-    <div className={style.header}>
+    <div className={styles.header}>
         <h1>Quiz🧠</h1>
         <p>
             Poné a prueba cuánto recordás de lo que estudiaste</p>

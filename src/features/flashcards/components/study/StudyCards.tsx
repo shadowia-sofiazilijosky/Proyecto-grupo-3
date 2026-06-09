@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useFlashcardStore } from "../../../../features/flashcards/store";
-import style from "../../../../pages/flashcards/studycards.module.css";
+import styles from "../../../../pages/flashcards/studycards.module.css";
 import Sidebar from "./Sidebar";
 import StudyMain from "./StudyMain";
 
 const StudyCards = () => {
   const flashcards = useFlashcardStore((s) => s.flashcards);
 
-  const [index, setIndex] = useState(0);
-  const [showAnswer, setShowAnswer] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   const [filter, setFilter] = useState("all");
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -18,49 +18,49 @@ const StudyCards = () => {
       : flashcards.filter((card) => card.difficulty === filter);
 
   useEffect(() => {
-    setIndex(0);
-    setShowAnswer(false);
+    setCurrentIndex(0);
+    setIsAnswerVisible(false);
   }, [filter]);
 
-  const card = filteredCards[index];
+  const card = filteredCards[currentIndex];
   const hasCards = filteredCards.length > 0;
 
   const handleClick = () => {
-    if (!showAnswer) {
-      setShowAnswer(true);
+    if (!isAnswerVisible) {
+      setIsAnswerVisible(true);
     } else {
-      setIndex((prev) => (prev + 1) % filteredCards.length);
-      setShowAnswer(false);
+      setCurrentIndex((prev) => (prev + 1) % filteredCards.length);
+      setIsAnswerVisible(false);
     }
   };
 
   return (
     <>
       <button
-        className={style.menuButton}
+        className={styles.menuButton}
         onClick={() => setMenuOpen(!menuOpen)}
       >
         ☰
       </button>
 
-      <div className={style.layout}>
+      <div className={styles.layout}>
         <Sidebar
           filter={filter}
           setFilter={setFilter}
           filteredCards={filteredCards}
-          index={index}
-          setIndex={setIndex}
-          setShowAnswer={setShowAnswer}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+          setShowAnswer={setIsAnswerVisible}
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
         />
 
         <StudyMain
           hasCards={hasCards}
-          index={index}
+          currentIndex={currentIndex}
           total={filteredCards.length}
           card={card}
-          showAnswer={showAnswer}
+          showAnswer={isAnswerVisible}
           handleClick={handleClick}
           filter={filter}
         />
