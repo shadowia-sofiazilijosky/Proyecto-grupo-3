@@ -39,9 +39,18 @@ export const useFlashcardStore = create<FlashcardState>()(
         set((state) => ({
           flashcards: state.flashcards.filter((card) => card.id !== id),
         })),
-      recordResult: (_id, _isCorrect) => {
-        // 🚧 D3 lo implementa
-      },
+      recordResult: (id, isCorrect) => 
+        set((state)=> ({
+          flashcards: state.flashcards.map((card)=>{
+            if(card.id === id)
+              return {
+            ...card,
+              hits: isCorrect ? card.hits + 1 : card.hits,
+              misses: isCorrect ? card.misses : card.misses +1
+            }
+            return card
+          })
+        })),
     }),
     {
       name: "flashcard-store",
