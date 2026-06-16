@@ -55,6 +55,16 @@ const Header = () => {
             Quiz
           </NavLink>
 
+          {/* 👇 ACÁ AGREGAMOS TU BOTÓN DE PROGRESO */}
+          <NavLink
+            to="/progress"
+            className={({ isActive }) =>
+              `${style.link} ${isActive ? style.linkActive : ""}`
+            }
+          >
+            Progreso
+          </NavLink>
+
         </nav>
       </div>
     </header>

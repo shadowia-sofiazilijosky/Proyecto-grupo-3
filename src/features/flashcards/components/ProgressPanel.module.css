@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.25rem;
+  color: #2c4c3b; /* El mismo verde oscuro del título principal */
+  margin-bottom: 2rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.card {
+  background-color: transparent;
+  border: 1px solid #e5e5e5; /* Borde finito y delicado como las otras cards */
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #2c4c3b;
+}
+
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.value {
+  font-size: 3rem;
+  color: #2c4c3b;
+  margin: 0;
+  font-weight: 300;
+  font-family: serif; /* Para igualar los números de tus compañeros */
+  line-height: 1;
+}
+
+.subtext {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 1rem;
+  font-style: italic;
+}

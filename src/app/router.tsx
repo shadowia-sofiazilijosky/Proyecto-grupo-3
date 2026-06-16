@@ -5,6 +5,8 @@ import { CreateCards } from '@/pages/CreateCards';
 import ListCards from '@/pages/ListCards';
 import StudyCards from '@/pages/flashcards/StudyCards';
 import Quiz from '@/pages/quiz/Quiz';
+// 👇 Acá le indicamos que entre a la carpeta "progress" primero
+import ProgressPage from '@/pages/progress/ProgressPage';
 
 export const router = createBrowserRouter([
     {
@@ -16,8 +18,7 @@ export const router = createBrowserRouter([
             { path: "listCards", Component: ListCards },
             { path: "studyCards", Component: StudyCards },
             { path: "quiz", Component: Quiz },
+            { path: "progress", Component: ProgressPage },
         ],
     },
 ]);
-
-
