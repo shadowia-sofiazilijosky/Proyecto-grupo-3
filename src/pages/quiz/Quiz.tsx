@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useFlashcardStore } from "../../features/flashcards/store";
+import { getPrioritizedCards } from "../../features/flashcards/utils";
 import styles from "./quiz.module.css";
 
 import Header from "./components/header/Header";
@@ -17,9 +18,16 @@ type Answer = {
 };
 
 const Quiz = () => {
-  const flashcards = useFlashcardStore((s) => s.flashcards);
+  const allFlashcards = useFlashcardStore((s) => s.flashcards);
   const recordResult = useFlashcardStore((s) => s.recordResult);
+  //Estado para saber cunado recalcular el mazo si el usuario reinicia
+  const [sessionAttempt, setSessionAttempt] = useState(0);
 
+  // useMemo congela el array ordenado para que no parpadee al responder.
+  // solo vuelve a ejecutar el algoritmo si sessionAttempt cambia.
+  const flashcards = useMemo(() => {
+    return getPrioritizedCards(allFlashcards);
+  }, [sessionAttempt]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -119,6 +127,7 @@ if (finished) {
             setFinished(false);
             setUserAnswers([]);
             setShowReview(false);
+            setSessionAttempt((prev) => prev + 1); // Esto hará que se recalcule el mazo y se mezclen las tarjetas para la próxima ronda.
           }}
         />
       </div>
