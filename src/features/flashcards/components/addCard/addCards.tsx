@@ -33,28 +33,20 @@ export function CreateFlashcard() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
     addFlashcard({
       ...values,
       hits: 0,
       misses: 0
     });
-
     setValues(DEFAULT_VALUES);
   }
 
   return (
     <form className={style.form} onSubmit={handleSubmit}>
-      <div className={style.formHeader}>
-        <h2 className={style.formTitle}>Nueva Flashcard</h2>
-        <p className={style.formSubtitle}>Agregá una nueva tarjeta a tu mazo</p>
-      </div>
-
-      <div className={style.fields}>
+      {/* Bloque 1: Pregunta y Respuesta en su burbuja */}
+      <div className={style.bubbleGroup}>
         <div className={style.field}>
-          <label className={style.label} htmlFor="question">
-            Pregunta
-          </label>
+          <label className={style.label} htmlFor="question">Pregunta</label>
           <textarea
             className={style.textarea}
             id="question"
@@ -67,9 +59,7 @@ export function CreateFlashcard() {
         </div>
 
         <div className={style.field}>
-          <label className={style.label} htmlFor="answer">
-            Respuesta
-          </label>
+          <label className={style.label} htmlFor="answer">Respuesta</label>
           <textarea
             className={style.textarea}
             id="answer"
@@ -80,12 +70,13 @@ export function CreateFlashcard() {
             required
           />
         </div>
+      </div>
 
+      {/* Bloque 2: Tema y Dificultad en su burbuja */}
+      <div className={style.bubbleGroup}>
         <div className={style.row}>
           <div className={style.field}>
-            <label className={style.label} htmlFor="topic">
-              Tema
-            </label>
+            <label className={style.label} htmlFor="topic">Tema</label>
             <input
               className={style.input}
               id="topic"
@@ -99,9 +90,7 @@ export function CreateFlashcard() {
           </div>
 
           <div className={style.field}>
-            <label className={style.label} htmlFor="difficulty">
-              Dificultad
-            </label>
+            <label className={style.label} htmlFor="difficulty">Dificultad</label>
             <select
               className={style.select}
               id="difficulty"
@@ -119,9 +108,9 @@ export function CreateFlashcard() {
         </div>
       </div>
 
+      {/* Botón final fuera de los grupos para mayor separación */}
       <button className={style.submit} type="submit">
-        <span className={style.submitIcon}>+</span>
-        Crear tarjeta
+        <span className={style.submitIcon}>+</span> Crear tarjeta
       </button>
     </form>
   );

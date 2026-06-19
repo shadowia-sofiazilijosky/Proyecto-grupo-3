@@ -1,24 +1,25 @@
-import { createBrowserRouter } from 'react-router';
-import { RootLayout } from "@/shared/components/layout/RootLayout";
+import { createBrowserRouter } from 'react-router-dom';
+// Nota: Si el error de RootLayout persiste, borra esto, escribe @/shared/ 
+// y usa Ctrl + Espacio para elegir el archivo correcto.
+import { RootLayout } from "@/shared/RootLayout"; 
 import { HomePage } from "@/pages/home/HomePage";
-import { CreateCards } from '@/pages/CreateCards';
-import ListCards from '@/pages/ListCards';
-import StudyCards from '@/pages/flashcards/StudyCards';
-import Quiz from '@/pages/quiz/Quiz';
-// 👇 Acá le indicamos que entre a la carpeta "progress" primero
-import ProgressPage from '@/pages/progress/ProgressPage';
+import { CreateCards } from '@/features/flashcards/components/createCard/CreateCards';
+import { ListCards } from '@/features/flashcards/components/ListCards/ListCards';
+import { StudyCards } from '@/pages/flashcards/StudyCards';
+import { Quiz } from '@/pages/quiz/Quiz';
+import { ProgressPage } from '@/pages/progress/ProgressPage';
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        Component: RootLayout,
+        element: <RootLayout />,
         children: [
-            { index: true, Component: HomePage },
-            { path: "createCards", Component: CreateCards },
-            { path: "listCards", Component: ListCards },
-            { path: "studyCards", Component: StudyCards },
-            { path: "quiz", Component: Quiz },
-            { path: "progress", Component: ProgressPage },
+            { index: true, element: <HomePage /> },
+            { path: "createCards", element: <CreateCards /> },
+            { path: "listCards", element: <ListCards /> },
+            { path: "studyCards", element: <StudyCards /> },
+            { path: "quiz", element: <Quiz /> },
+            { path: "progress", element: <ProgressPage /> },
         ],
     },
 ]);

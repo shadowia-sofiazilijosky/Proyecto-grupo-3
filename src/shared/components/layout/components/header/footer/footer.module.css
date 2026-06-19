@@ -1,66 +1,81 @@
-/* ─── Footer ─────────────────────────────────────────────────────────────── */
+/* ─── FOOTER PRINCIPAL (Lila Vidriado + Texto de Alto Contraste) ─── */
 .footer {
-  background: #1a1a18;
-  border-top: 3px solid #2a6b5e;
+  width: 100%;
+  padding: 20px 4vw; 
+  
+  /* COLOR LILA PASTEL VIDRIADO */
+  background: rgba(179, 147, 255, 0.4); 
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  
+  /* Borde superior lila suave */
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
 }
 
 .inner {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px 24px;
+  width: 100%;
+  max-width: 1350px; /* Contenido centrado y alineado */
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  align-items: center;
 }
 
-/* ─── Brand ──────────────────────────────────────────────────────────────── */
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  flex: 1; /* Ocupa un tercio del espacio */
+  justify-content: flex-start; /* Logo pegado a la izquierda */
 }
 
-.brandMark {
-  font-size: 0.95rem;
-  color: #4db89e;
-  line-height: 1;
+.logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  /* Esto hace que los colores del logo "exploten" más */
+  filter: saturate(1.5) contrast(1.1) brightness(1.05);
 }
 
+/* Letra bien oscura para el nombre del logo */
 .brandName {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
+  font-weight: 900; /* Extra negrita */
+  font-size: 1.2rem;
+  color: #0F172A; /* Azul noche muy oscuro */
+}
+
+/* Letra bien oscura para la frase central */
+.tagline { 
+  flex: 1; /* Ocupa el centro */
+  text-align: center;
+  font-style: italic; 
+  font-weight: 700; /* Más peso */
+  color: #0F172A;   /* Alta legibilidad */
   font-size: 0.95rem;
-  color: #f7f5f0;
-  letter-spacing: 0.01em;
 }
 
-/* ─── Tagline ────────────────────────────────────────────────────────────── */
-.tagline {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-size: 0.8rem;
-  color: #4db89e;
-  letter-spacing: 0.03em;
+/* Letra bien oscura para el copyright */
+.copyright { 
+  flex: 1; /* Ocupa el último tercio */
+  text-align: right; /* Copyright bien a la derecha */
+  font-weight: 600; /* Más peso */
+  color: #1E293B;   /* Azul oscuro intenso */
+  font-size: 0.95rem;
 }
 
-/* ─── Copyright ──────────────────────────────────────────────────────────── */
-.copy {
-  font-family: "Segoe UI", "SF Pro Text", Cantarell, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #5a5a52;
-  text-transform: uppercase;
-}
-
-/* ─── Responsive ─────────────────────────────────────────────────────────── */
-@media (max-width: 480px) {
+/* RESPONSIVE */
+@media (max-width: 768px) {
   .inner {
     flex-direction: column;
+    gap: 16px;
     text-align: center;
-    gap: 8px;
-    padding: 18px 16px;
+  }
+  .brand, .tagline, .copyright {
+    justify-content: center;
+    text-align: center;
+    flex: none;
   }
 }

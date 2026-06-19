@@ -1,0 +1,56 @@
+/* ─── CONTENEDOR PRINCIPAL CON ESPACIO PARA NAVBAR ─── */
+.container {
+  width: 100%;
+  padding: 100px 20px 80px; 
+  box-sizing: border-box;
+  text-align: left; /* Alineación forzada a la izquierda para títulos y lista */
+}
+
+/* ─── GRID DE LISTADO (Ocupa todo el ancho) ─── */
+.list {
+  display: grid;
+  /* El auto-fit + minmax asegura que se estiren ocupando el espacio disponible */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── TÍTULOS ─── */
+.title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.titlelist {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+/* ─── ESPACIADO ENTRE SECCIONES ─── */
+.listSection {
+  margin-top: 40px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 680px) {
+  .container {
+    padding: 80px 5vw 40px; 
+  }
+  .title { font-size: 1.5rem; }
+  .list { grid-template-columns: 1fr; } /* En celular, una sola columna */
+}

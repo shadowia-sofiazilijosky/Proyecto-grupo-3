@@ -1,21 +1,27 @@
 import style from "./footer.module.css";
 
 const Footer = () => {
+  return (
+    <footer className={style.footer}>
+      <div className={style.inner}>
+        
+        {/* 1. LOGO A LA IZQUIERDA */}
+        <div className={style.brand}>
+          <img src="/logo-f.png" alt="Flashwise Logo" className={style.logo} />
+          <span className={style.brandName}>Flashwise</span>
+        </div>
 
-return (
-  <footer className={style.footer}>
-    <div className={style.inner}>
-      <span className={style.brand}>
-        <span className={style.brandMark}>✦</span>
-        <span className={style.brandName}>Flashwise</span>
-      </span>
+        {/* 2. FRASE AL CENTRO */}
+        <span className={style.tagline}>Estudiá con intención.</span>
 
-      <p className={style.tagline}>Estudiá con intención.</p>
+        {/* 3. COPYRIGHT A LA DERECHA */}
+        <span className={style.copyright}>
+          © {new Date().getFullYear()} Flashwise. Todos los derechos reservados.
+        </span>
 
-      <span className={style.copy}>© {new Date().getFullYear()}</span>
-    </div>
-  </footer>
-);
+      </div>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;

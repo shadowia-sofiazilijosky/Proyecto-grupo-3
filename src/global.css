@@ -1,0 +1,49 @@
+/* --- VARIABLES GLOBALES EDTECH (Estilo Quizlet) --- */
+:root {
+  /* Colores */
+  --bg-app: #F6F7FB;       /* Gris-azulado ultra limpio para el fondo */
+  --bg-card: #FFFFFF;       /* Blanco puro para las flashcards */
+  --text-main: #2E3856;     /* Azul noche característico de Quizlet */
+  --text-muted: #586380;    /* Gris azulado para textos secundarios */
+  
+  --brand-primary: #4255FF; /* El Azul/Índigo vibrante principal */
+  --brand-accent: #FFCD1F;  /* Amarillo/Dorado para las rachas (Streak) */
+  
+  /* Estructura y Sombras (EdTech) */
+  --radius-card: 16px;
+  --shadow-base: 0 0.25rem 1rem rgba(46, 56, 86, 0.08);
+  --shadow-hover: 0 0.5rem 1.5rem rgba(46, 56, 86, 0.12);
+
+  /* Tipografía */
+  --font-ui: 'Inter', system-ui, sans-serif;
+}
+
+/* --- RESETEO TOTAL PARA EVITAR ESPACIOS BLANCOS Y SCROLL HORIZONTAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Elimina la barra de scroll horizontal */
+  min-height: 100vh;
+}
+
+/* --- APLICACIÓN GLOBAL AL PROYECTO --- */
+body {
+  /* Aplicamos el fondo aquí para que el Navbar y Footer puedan mostrarlo detrás */
+  background-image: url('/fondo-home.jpg'); 
+  background-size: cover; 
+  background-position: center top; 
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  
+  color: var(--text-main); 
+  font-family: var(--font-ui);
+  
+  /* Renderizado de fuentes nítido */
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale;
+}

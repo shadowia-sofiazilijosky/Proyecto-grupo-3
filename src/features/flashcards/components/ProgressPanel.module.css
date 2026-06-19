@@ -1,64 +1,79 @@
+/* ProgressPanel.module.css - Versión Senior Premium */
+
 .container {
   width: 100%;
-  margin: 3rem 0;
+  max-width: 1000px; /* Evita que en pantallas gigantes se estire demasiado */
+  margin: 3rem auto; /* Centramos el contenedor principal */
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: var(--font-ui); /* Usamos Inter */
 }
 
+/* El título principal "Mi Rendimiento" con Lora */
 .title {
-  font-size: 1.25rem;
-  color: #2c4c3b; /* El mismo verde oscuro del título principal */
-  margin-bottom: 2rem;
-  font-weight: 500;
+  font-size: 2.2rem;
+  color: #1E3A8A; /* Azul Noche Institucional */
+  font-family: var(--font-heading); /* Letra Lora */
+  margin-bottom: 3rem;
+  font-weight: 700;
   text-align: center;
 }
 
+/* La grilla de tarjetas */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Tarjetas más grandes */
+  gap: 2rem; /* Más espacio entre tarjetas */
   width: 100%;
 }
 
+/* LA TARJETA PREMIUM 🌟 */
 .card {
-  background-color: transparent;
-  border: 1px solid #e5e5e5; /* Borde finito y delicado como las otras cards */
-  border-radius: 8px;
-  padding: 2rem 1.5rem;
+  background-color: var(--bg-card); /* Blanco puro */
+  border-radius: var(--radius-card); /* Bordes redondeados */
+  box-shadow: var(--shadow-base); /* Sombra difusa premium */
+  padding: 3rem 2.5rem; /* ¡Mucho padding para que "respire"! */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04); /* Un borde casi invisible */
 }
 
+/* Efecto al pasar el mouse (gamificación corporativa) */
 .card:hover {
-  transform: translateY(-2px);
-  border-color: #2c4c3b;
+  transform: translateY(-8px); /* Sube un poco más */
+  box-shadow: var(--shadow-hover); /* Sombra más fuerte al subir */
 }
 
+/* Las etiquetas (ej: RACHA ACTUAL) */
 .label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #666;
+  letter-spacing: 0.15em;
+  color: var(--text-muted); /* Gris medio */
   margin-bottom: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: var(--font-ui); /* Letra Inter */
 }
 
+/* El número protagonista (ej: 0, 7) con Lora */
 .value {
-  font-size: 3rem;
-  color: #2c4c3b;
+  font-size: 5rem; /* Número gigante y motivador */
+  color: #1E3A8A; /* Azul Noche */
   margin: 0;
-  font-weight: 300;
-  font-family: serif; /* Para igualar los números de tus compañeros */
+  font-weight: 700;
+  font-family: var(--font-heading); /* Letra Lora */
   line-height: 1;
 }
 
+/* El subtítulo (ej: días seguidos) */
 .subtext {
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
   font-style: italic;
+  font-family: var(--font-ui); /* Letra Inter */
 }

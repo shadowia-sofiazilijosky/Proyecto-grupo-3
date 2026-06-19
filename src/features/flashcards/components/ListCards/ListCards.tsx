@@ -7,17 +7,20 @@ const ListCards = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   return (
-    <div>
+    <div className={style.container}> 
       <section>
         <h2 className={style.title}>Editar flashcard</h2>
         {editingId ? (
           <EditFlashcard id={editingId} onDone={() => setEditingId(null)} />
         ) : (
-          <p className={style.subtitle}>Seleccioná una card del listado para editarla.</p>
+          <p className={style.subtitle}>
+            Seleccioná una card del listado para editarla.
+          </p>
         )}
       </section>
-      <section>
-        <h2  className={style.titlelist}>Listado</h2>
+      
+      <section className={style.listSection}>
+        <h2 className={style.titlelist}>Listado</h2>
         <FlashcardList onEdit={setEditingId} />
       </section>
     </div>

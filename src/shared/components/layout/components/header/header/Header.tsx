@@ -1,74 +1,87 @@
-import { NavLink } from "react-router";
+import { useState } from "react";
+import { NavLink } from "react-router"; // Ojo, en versiones nuevas suele ser "react-router-dom"
 import style from "./header.module.css";
 import { ROUTES } from "../../../utils/routes";
 
 const Header = () => {
+  // Estado para controlar si el menú de celular está abierto o cerrado
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Función para cerrar el menú cuando tocamos un link
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header className={style.header}>
       <div className={style.inner}>
+        
+        {/* LOGO */}
         <span className={style.brand}>
-          <span className={style.brandMark}>✦</span>
+          <img src="/logo-f.png" alt="Flashwise Logo" className={style.logoImage} />
           <span className={style.brandName}>Flashwise</span>
         </span>
 
-        <nav className={style.nav}>
+        {/* BOTÓN HAMBURGUESA (Solo visible en celulares) */}
+        <button 
+          className={style.menuToggle} 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {/* Ícono SVG de Hamburguesa / Cruz dinámica */}
+          {isMenuOpen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          )}
+        </button>
+
+        {/* NAVEGACIÓN (En celus le agrega la clase .navOpen si tocamos el botón) */}
+        <nav className={`${style.nav} ${isMenuOpen ? style.navOpen : ""}`}>
           <NavLink
             to={ROUTES.HOME}
-            className={({ isActive }) =>
-              `${style.link} ${isActive ? style.linkActive : ""}`
-            }
+            onClick={closeMenu}
+            className={({ isActive }) => `${style.link} ${isActive ? style.linkActive : ""}`}
           >
-            Home
+            HOME
           </NavLink>
           <NavLink
             to={ROUTES.CREATECARDS}
-            className={({ isActive }) =>
-              `${style.link} ${isActive ? style.linkActive : ""}`
-            }
+            onClick={closeMenu}
+            className={({ isActive }) => `${style.link} ${isActive ? style.linkActive : ""}`}
           >
-            Creá cards
+            CREA CARDS
           </NavLink>
           <NavLink
             to={ROUTES.LISTCARDS}
-            className={({ isActive }) =>
-              `${style.link} ${isActive ? style.linkActive : ""}`
-            }
+            onClick={closeMenu}
+            className={({ isActive }) => `${style.link} ${isActive ? style.linkActive : ""}`}
           >
-            Cards
+            CARDS
           </NavLink>
           <NavLink
             to={ROUTES.STUDYCARDS}
-            className={({ isActive }) =>
-              `${style.link} ${isActive ? style.linkActive : ""}`
-            }
+            onClick={closeMenu}
+            className={({ isActive }) => `${style.link} ${isActive ? style.linkActive : ""}`}
           >
-            Estudiar
+            ESTUDIAR
           </NavLink>
-
           <NavLink
             to={ROUTES.QUIZ}
-            className={({ isActive }) =>
-              `${style.link} ${isActive ? style.linkActive : ""}`
-            }
+            onClick={closeMenu}
+            className={({ isActive }) => `${style.link} ${isActive ? style.linkActive : ""}`}
           >
-            Quiz
+            QUIZ
           </NavLink>
-
-          {/* 👇 ACÁ AGREGAMOS TU BOTÓN DE PROGRESO */}
           <NavLink
             to="/progress"
-            className={({ isActive }) =>
-              `${style.link} ${isActive ? style.linkActive : ""}`
-            }
+            onClick={closeMenu}
+            className={({ isActive }) => `${style.link} ${isActive ? style.linkActive : ""}`}
           >
-            Progreso
+            PROGRESO
           </NavLink>
-
         </nav>
       </div>
     </header>
   );
 }
 
-export default Header
+export default Header;
