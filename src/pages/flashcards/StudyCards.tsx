@@ -81,6 +81,7 @@ const StudyCards = () => {
       onClick={() => setMenuOpen(!menuOpen)}>
         ☰
       </button>
+    </div>
 
       <StudyMain
         hasCards={hasCards}

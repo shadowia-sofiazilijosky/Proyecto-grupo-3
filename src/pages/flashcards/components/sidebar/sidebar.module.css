@@ -6,7 +6,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap");
 
 .sidebar {
-    width: 0;
+  width: 280px;
     flex-shrink: 0;         
     box-sizing: border-box;
     padding: 0; 
@@ -67,7 +67,9 @@
   font-family: "Lora", serif;
   font-size: 1.8rem;
   font-weight: 600;
-  margin: 0;
+  text-align: center;
+  margin: 0 0 10px 0;
+
   background: linear-gradient(135deg, #fdba74 0%, #c084fc 50%, #93c5fd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -103,13 +105,27 @@
   font-weight: 700;
   color: #1e293b;
   transition: all 0.2s ease;
+  /* Sin borde base para que los colores se vean plenos */
   border: none;
 }
 
-.easy { background-color: #22c55e !important; color: #064e3b !important; }
-.medium { background-color: #eab308 !important; color: #713f12 !important; }
-.hard { background-color: #ef4444 !important; color: #7f1d1d !important; }
+/* ─── COLORES DE DIFICULTAD SÓLIDOS (Sin transparencia) ─── */
+.easy {
+  background-color: #22c55e !important;
+  color: #064e3b !important;
+}
 
+.medium {
+  background-color: #eab308 !important;
+  color: #713f12 !important;
+}
+
+.hard {
+  background-color: #ef4444 !important;
+  color: #7f1d1d !important;
+}
+
+/* Efectos de interacción */
 .listItem:hover {
   filter: brightness(0.9);
   transform: translateX(5px);
@@ -121,8 +137,8 @@
   border: 2px solid rgba(255, 255, 255, 0.9);
 }
 
-/* ─── Responsive ─────────────────────────────────── */
-@media (max-width: 1024px) {
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {        
     .sidebar {
         position: fixed;
         top: 80px; 
@@ -137,8 +153,7 @@
         margin-left: 0 !important; 
         margin-top: 0 !important;
     }
-    
-    .sidebar.open {
-        left: 10px !important; 
+    .open {
+        left: 0;
     }
 }
