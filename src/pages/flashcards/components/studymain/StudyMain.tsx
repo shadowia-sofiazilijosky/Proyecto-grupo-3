@@ -1,7 +1,5 @@
-import styles from "../../../../pages/flashcards/studycards.module.css";
-import cardStyles from "../../../../shared/components/ui/flipcard/card.module.css";
 import { useMemo } from "react"; // Necesitamos esto para que el color sea estable
-
+import styles from "../../../../pages/flashcards/studycards.module.css";
 type Props = {
   hasCards: boolean;
   currentIndex: number;
@@ -26,46 +24,52 @@ const StudyMain = ({
   const pastelColors = [
     "#fecaca", "#fde68a", "#bbf7d0", "#bfdbfe", "#ddd6fe", "#fbcfe8", "#c7d2fe"
   ];
-  
+
   const randomColor = useMemo(() => {
     return pastelColors[Math.floor(Math.random() * pastelColors.length)];
   }, [currentIndex]); // Cambia solo cuando pasas a la siguiente tarjeta
 
   return (
     <main className={styles.main}>
-      <h2 className={styles.animatedTitle}>Modo Estudio</h2>
+      <h2>Modo Estudio</h2>
 
       {hasCards ? (
         <>
-          <p className={styles.counter}>
+          <p>
             {currentIndex + 1} / {total}
           </p>
 
-          <div 
-            className={`${cardStyles.cardWrapper} ${cardStyles.cardSizeDefault} ${cardStyles.cardStudyMobile} ${styles.rainbowCard}`} 
-            onClick={handleClick}
-          >
-            <div
-              className={`${cardStyles.cardInner} ${showAnswer ? cardStyles.flipped : ""}`}
-            >
-              {/* Pregunta */}
-              <div className={`${cardStyles.cardFace} ${cardStyles.front} ${styles.front} ${styles.cardQuestion}`}>
-                {card.question}
-              </div>
+          <div className={styles.studyContainer}>
 
-              {/* Respuesta con color aleatorio y tipografía Lora */}
-              <div
-                className={`${cardStyles.cardFace} ${cardStyles.back} ${styles.back} ${styles[filter]}`}
-                style={{ backgroundColor: showAnswer ? randomColor : "transparent" }}
+            {/* Botón arriba */}
+            <div className={styles.buttonContainer}>
+              <button
+                className={styles.menuButton}
+                onClick={handleClick}
               >
-                <div className={styles.answerContent}>
+                ☰
+              </button>
+            </div>
+
+            {/* Card */}
+            <div className={styles.cardWrapper}>
+
+              <div className={`${styles.card} ${showAnswer ? styles.flipped : ""}`}>
+
+                <div className={`${styles.cardFace} ${styles.front}`}>
+                  {card.question}
+                </div>
+
+                <div className={`${styles.cardFace} ${styles.back}`}>
                   {card.answer}
                 </div>
-              </div>
-            </div>
-          </div>
 
-          <p className={styles.hint}>
+              </div>
+
+            </div>
+
+          </div>
+          <p>
             {showAnswer
               ? "Click para la siguiente"
               : "Pensá la respuesta y hacé click"}
@@ -75,7 +79,7 @@ const StudyMain = ({
         <div className={styles.emptyBox}>
           <h3>¡Ups!</h3>
           <p>No encontramos tarjetas para este filtro.</p>
-          <p style={{marginTop: '20px', fontSize: '0.9rem'}}>Probá cambiando el filtro o creá una nueva.</p>
+          <p style={{ marginTop: '20px', fontSize: '0.9rem' }}>Probá cambiando el filtro o creá una nueva.</p>
         </div>
       )}
     </main>
