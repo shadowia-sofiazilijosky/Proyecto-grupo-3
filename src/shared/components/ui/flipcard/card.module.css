@@ -1,4 +1,4 @@
-.cardWrapper {
+/*.cardWrapper {
     display: block;
     perspective: 1000px;
     margin-bottom: 5px;
@@ -7,12 +7,12 @@
     justify-content: center;
 }
 
-/* Hacemos que el tamaño default sea elástico */
+/* Hacemos que el tamaño default sea elástico /
 .cardSizeDefault {
     width: 90%;
-    max-width: 820px; /* Tamaño máximo en PC */
+    max-width: 820px; /* Tamaño máximo en PC /
     min-height: 400px;
-    height: 50vh;    /* Altura proporcional a la pantalla */
+    height: 50vh;    /* Altura proporcional a la pantalla /
 }
 
 .cardInner {
@@ -34,16 +34,16 @@
     backface-visibility: hidden;
     display: flex;
     flex-direction: column;   
-    justify-content: center; /* Centrado perfecto */
+    justify-content: center; /* Centrado perfecto /
     align-items: center;
-    border-radius: 25px; /* Ajustado para coincidir con tu diseño */
+    border-radius: 25px; /* Ajustado para coincidir con tu diseño /
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    background: transparent !important; /* Limpiado para dejar ver el degradado */
+    background: transparent !important; /* Limpiado para dejar ver el degradado /
 }
 
-/* Quitamos los backgrounds blancos que estaban fijos */
+/* Quitamos los backgrounds blancos que estaban fijos /
 .front {
     background: transparent !important;
 }
@@ -53,10 +53,10 @@
     background: transparent !important;
 }
 
-/* Responsive simplificado */
+/* Responsive simplificado /
 @media(max-width:480px){
     .cardStudyMobile {
-        width: 95% !important; /* Casi todo el ancho de la pantalla */
+        width: 95% !important; / Casi todo el ancho de la pantalla /
         height: 350px !important;
         flex-grow: 0; 
     }
@@ -66,4 +66,4 @@
         width: 95%;
         max-width: 400px;
     }
-}
+}*/
