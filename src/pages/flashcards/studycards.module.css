@@ -3,54 +3,54 @@
    ========================================================================== */
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 🔹 CORRECCIÓN CRÍTICA: Quitamos fondos y bordes opacos */
 .front {
-    border: none !important;
-    background: transparent !important;
+  border: none !important;
+  background: transparent !important;
 }
 
 /* El fondo de .back ahora es gestionado dinámicamente por el componente */
 .back {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    border-radius: 25px !important;
-    border: 3px solid rgba(255, 255, 255, 0.8) !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
-    /* Quitamos el fondo fijo aquí para permitir el color aleatorio */
-    background: transparent !important; 
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 25px !important;
+  border: 3px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  /* Quitamos el fondo fijo aquí para permitir el color aleatorio */
+  background: transparent !important;
 }
 
 /* 🔹 LAYOUT */
 .layout {
-    display: flex;
-    height: calc(100vh - 100px);
-    padding-top: 100px;
+  display: flex;
+  height: 90vh;
+  padding-top: 100px;
 }
 
 /* 🔹 MAIN: Contenedor central de estudio */
 .main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 15px;
-    padding-top: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  padding-top: 40px;
 }
 
 /* ─── ESTILOS PREMIUM PARA EL MODO ESTUDIO ─── */
 .animatedTitle {
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #FDBA74 0%, #C084FC 50%, #93C5FD 100%);
+  background: linear-gradient(135deg, #fdba74 0%, #c084fc 50%, #93c5fd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -59,7 +59,14 @@
 
 /* Degradado arcoíris forzado con !important */
 .rainbowCard {
-  background: linear-gradient(135deg, #fecaca, #fde68a, #bbf7d0, #bfdbfe, #ddd6fe) !important;
+  background: linear-gradient(
+    135deg,
+    #fecaca,
+    #fde68a,
+    #bbf7d0,
+    #bfdbfe,
+    #ddd6fe
+  ) !important;
   border-radius: 25px !important;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
   border: 3px solid rgba(255, 255, 255, 0.8) !important;
@@ -69,7 +76,7 @@
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1.8rem !important;
   font-weight: 800 !important;
   color: #1e293b !important;
@@ -79,16 +86,16 @@
 
 /* Tipografía Lora y estilo para la respuesta */
 .answerContent {
-    font-family: 'Lora', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-    padding: 20px;
+  font-family: "Lora", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
 }
 
 .counter {
@@ -98,84 +105,81 @@
 }
 
 .hint {
-    color: #64748b;
-    font-size: 0.9rem;
-    margin-top: 15px;
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-top: 15px;
 }
 
 /* ─── ELEMENTOS ADICIONALES ─── */
+.containerBtn {
+    position: relative;
+}
 .menuButton {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 10px;
-    font-size: 22px;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    border-radius: 6px;
-    cursor: pointer;
+  display: none;
+  position:absolute;
+  top: 150px; 
+  right: 16px;
+  z-index: 1100; 
+  font-size: 22px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .emptyBox {
-    /* Tamaño y forma */
-    width: 80% !important;
-    max-width: 600px;
-    padding: 60px 40px;
-    border-radius: 30px;
-    text-align: center;
-    
-    /* Efecto Glassmorphism */
-    background: rgba(255, 255, 255, 0.3) !important;
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-    
-    /* Borde con brillo sutil */
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
-    
-    /* Sombra para que destaque */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
-    
-    /* Estilo de texto */
-    color: #334155;
-    margin-top: 50px;
+  /* Tamaño y forma */
+  width: 80% !important;
+  max-width: 600px;
+  padding: 60px 40px;
+  border-radius: 30px;
+  text-align: center;
+
+  /* Efecto Glassmorphism */
+  background: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+
+  /* Borde con brillo sutil */
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+
+  /* Sombra para que destaque */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+
+  /* Estilo de texto */
+  color: #334155;
+  margin-top: 50px;
 }
 
 .emptyBox h3 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    font-family: 'Lora', serif;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-family: "Lora", serif;
 }
 
 .emptyBox p {
-    font-size: 1.2rem;
-    opacity: 0.8;
+  font-size: 1.2rem;
+  opacity: 0.8;
 }
 
 /* ─── RESPONSIVE DESIGN ─── */
 @media (max-width: 1024px) {
-    .animatedTitle { font-size: 2.5rem; }
-    .cardQuestion { font-size: 1.5rem !important; }
-}
-
-@media (max-width: 480px) {
-    .menuButton {
-        display: block;
-        z-index: 1;
-    }
-    .layout {
-        flex-direction: column;
-        padding-top: 80px;
-    }
-    .main {
-        width: 100%;
-        padding-top: 20px;
-    }
-    .animatedTitle { font-size: 2rem; }
-    .rainbowCard {
-        width: 90% !important;
-        height: 300px !important;
-    }
-    .cardQuestion { font-size: 1.2rem !important; }
-    .answerContent { font-size: 1.8rem !important; }
+  .menuButton {
+    display: block;
+  }
+  .layout {
+    flex-direction: column;
+    padding-top: 80px;
+  }
+  .main {
+    width: 100%;
+    padding-top: 20px;
+  }
+  .animatedTitle {
+    font-size: 2.5rem;
+  }
+  .cardQuestion {
+    font-size: 1.5rem !important;
+  }
 }

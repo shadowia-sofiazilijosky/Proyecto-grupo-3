@@ -2,20 +2,19 @@
    sidebar.module.css (Unificación Final: Colores Sólidos e Intensos)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap");
 
 /* ─── Contenedor Principal (Vidrio sutil) ───────────────────────────────── */
 .sidebar {
-    width: 100% !important; /* Ahora es fluido */
-    max-width: 300px;       /* Un límite máximo cómodo */
+  width: 280px;
+    flex-shrink: 0;         
     box-sizing: border-box;
     height: 100%;
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -26,84 +25,84 @@
 
 /* ─── Título Filtrar ─── */
 .filterTitle {
-    font-family: 'Lora', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    text-align: center;
-    margin: 0 0 10px 0;
-    
-    background: linear-gradient(135deg, #FDBA74 0%, #C084FC 50%, #93C5FD 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-family: "Lora", serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 10px 0;
+
+  background: linear-gradient(135deg, #fdba74 0%, #c084fc 50%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ─── Dropdown ────────────────────────────────────────────────────────── */
 .sidebar select {
-    padding: 12px 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.6);
-    color: #475569;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.2s ease;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.6);
+  color: #475569;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
 }
 
 /* ─── Lista de Items ──────────────────────────────────────────────────── */
 .list {
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* Estilo base de los ítems (limpio para que el color de dificultad destaque) */
 .listItem {
-    padding: 14px 16px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #1e293b;
-    transition: all 0.2s ease;
-    /* Sin borde base para que los colores se vean plenos */
-    border: none;
+  padding: 14px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  /* Sin borde base para que los colores se vean plenos */
+  border: none;
 }
 
 /* ─── COLORES DE DIFICULTAD SÓLIDOS (Sin transparencia) ─── */
-.easy { 
-    background-color: #22c55e !important; 
-    color: #064e3b !important; 
+.easy {
+  background-color: #22c55e !important;
+  color: #064e3b !important;
 }
 
-.medium { 
-    background-color: #eab308 !important; 
-    color: #713f12 !important; 
+.medium {
+  background-color: #eab308 !important;
+  color: #713f12 !important;
 }
 
-.hard { 
-    background-color: #ef4444 !important; 
-    color: #7f1d1d !important; 
+.hard {
+  background-color: #ef4444 !important;
+  color: #7f1d1d !important;
 }
 
 /* Efectos de interacción */
 .listItem:hover {
-    filter: brightness(0.9);
-    transform: translateX(5px);
+  filter: brightness(0.9);
+  transform: translateX(5px);
 }
 
 .listItem.active {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transform: scale(1.02);
-    border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  border: 2px solid rgba(255, 255, 255, 0.9);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {        
     .sidebar {
         position: fixed;
         top: 60px;
@@ -113,7 +112,6 @@
         z-index: 1001;
         transition: left 0.3s ease-in-out;
     }
-    
     .open {
         left: 0;
     }
