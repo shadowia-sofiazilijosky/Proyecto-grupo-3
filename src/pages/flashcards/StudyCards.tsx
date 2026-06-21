@@ -62,6 +62,7 @@ const StudyCards = () => {
       onClick={() => setMenuOpen(!menuOpen)}>
         ☰
       </button>
+    </div>
 
       <div className={styles.layout}>
         <Sidebar
