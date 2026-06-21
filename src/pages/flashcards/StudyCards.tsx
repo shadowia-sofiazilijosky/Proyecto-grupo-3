@@ -76,20 +76,11 @@ const StudyCards = () => {
   };
 
   return (
-    <div className={styles.layout}>
-      <Sidebar
-        filterType={filterType}
-        setFilterType={setFilterType}
-        filterValue={filterValue}
-        setFilterValue={setFilterValue}
-        materiasUnicas={materiasUnicas}
-        filteredCards={filteredCards}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-        setShowAnswer={setIsAnswerVisible}
-        menuOpen={menuOpen}
-        setMenuOpen={setMenuOpen}
-      />
+    <>
+      <button className={styles.menuButton}
+      onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </button>
 
       <StudyMain
         hasCards={hasCards}
