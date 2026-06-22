@@ -3,13 +3,11 @@ import difficulties from "../../../../shared/design/difficulty.module.css";
 import sidebar from "./sidebar.module.css";
 
 type Props = {
-  // Props nuevas para el filtro doble
   filterType: string;
   setFilterType: (val: string) => void;
   filterValue: string;
   setFilterValue: (val: string) => void;
   materiasUnicas: string[];
-  // Props originales
   filteredCards: any[];
   currentIndex: number;
   setCurrentIndex: (i: number) => void;
@@ -33,10 +31,22 @@ const Sidebar = ({
 }: Props) => {
   return (
     <aside className={`${sidebar.sidebar} ${menuOpen ? sidebar.open : ""}`}>
-      {/* Título corregido con la clase para degradado y fuente Lora */}
-      <h2 className={sidebar.filterTitle}>Filtrar</h2>
+      
+      {/* 🔹 HEADER: Ahora "Filtrar" a la izquierda y el botón a la derecha */}
+      <div className={sidebar.header}>
+        <h2 className={sidebar.filterTitle}>Filtrar</h2>
+        <button 
+          className={sidebar.toggleBtn} 
+          onClick={() => setMenuOpen(false)}
+          title="Cerrar barra lateral" /* 👈 Tooltip */
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+          </svg>
+        </button>
+      </div>
 
-      {/* Selector 1: Dividido por */}
       <label htmlFor="tipo-filtro" className={sidebar.label}>Dividido por:</label>
       <select
         id="tipo-filtro"
@@ -44,7 +54,7 @@ const Sidebar = ({
         value={filterType}
         onChange={(e) => {
           setFilterType(e.target.value);
-          setFilterValue(""); // Resetea el valor al cambiar categoría
+          setFilterValue(""); 
         }}
       >
         <option value="all">Todas</option>
@@ -52,7 +62,6 @@ const Sidebar = ({
         <option value="materia">Materia</option>
       </select>
 
-      {/* Selector 2: Valor (Lógica solicitada) */}
       {filterType === "difficulty" && (
         <>
           <label htmlFor="valor-filtro" className={sidebar.label}>Dificultad:</label>
@@ -100,8 +109,8 @@ const Sidebar = ({
             `}
             onClick={() => {
               setCurrentIndex(i);
-              setShowAnswer(false); // ✅ Resetea la respuesta al cambiar de carta
-              setMenuOpen(false);   // ✅ Cierra el menú en mobile
+              setShowAnswer(false);
+              if (window.innerWidth <= 1024) setMenuOpen(false); // Cierra automático solo en celular
             }}
           >
             {c.question}
