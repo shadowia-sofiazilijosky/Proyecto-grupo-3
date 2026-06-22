@@ -2,9 +2,7 @@
   display: flex;
   justify-content: center;/* 🔥 centra TODO */
 }
-.front {
-    border: 2px solid #000000;
-}
+
 .counters{
   position: absolute;
   top: 5px;    
@@ -32,6 +30,7 @@ flex-direction: column;
   display: flex;
   flex-direction: column;
   align-items: center;/* 🔥 centra contenido interno */
+  margin-bottom: 100px;
 }
 
 .progress {
@@ -109,10 +108,12 @@ flex-direction: column;
   width: 100%;                    
   max-width: 760px;                
   margin-top: 0; 
-  margin-bottom: 10px;      
+  margin-bottom: 10px;  
+  align-items: stretch;   
 }
 
 .header {
+  margin-top:100px;
   text-align: center;
   max-width: 900px;
 }
@@ -135,6 +136,181 @@ flex-direction: column;
   line-height: 1.5;
   margin:0px 5px;
 }
+/* 🔥 evita que el back se vea abajo */
+.cardContent {
+  position: relative;
+  z-index: 2;
+}
+
+/* 🔥 asegura que las caras estén superpuestas */
+.cardFace {
+  top: 0;
+  left: 0;
+}
+.flipCard {
+  width: 100%;
+  max-width: 700px;
+
+  min-height: 200px; /* ✅ base */
+  height: auto;      /* ✅ crece */
+
+  margin-bottom: 20px;
+  perspective: 1000px;
+
+  position: relative; /* 🔥 IMPORTANTE */
+}
+.flipInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+
+  will-change: transform;
+
+  transform: translateZ(0); /* 🔥 ESTE ES EL FIX */
+}
+.flipped {
+  transform: rotateY(180deg);
+}
+.flipBack {
+  transform: rotateY(180deg);
+  opacity: 0; /* 🔥 oculto inicialmente */
+}
+.flipped .flipBack {
+  opacity: 1; /* 🔥 aparece cuando gira */
+}
+.flipFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* 🔥 CLAVE */
+}
+
+/* FRONT */
+.flipFront {
+  background: white;
+  border: 2px solid #000;
+  padding:5px;
+}
+
+/* BACK */
+.flipBack {
+  transform: rotateY(180deg);
+}
+
+/* colores */
+.correct {
+  background: #22c55e;
+  border: 2px solid #178640;
+  color: white;
+}
+
+.incorrect {
+  background: #ef4444;
+  border: 2px solid #ad2424;
+  color: white;
+}
+/* contenedor */
+.optionCardWrapper {
+  perspective: 1000px;
+  width: 100%;
+}
+
+.optionInner {
+  position: absolute; /* 🔥 CAMBIO */
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+/* rotación */
+.optionFlipped {
+  transform: rotateY(180deg);
+}
+
+.optionFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;  /* ✅ usa la altura del contenido */
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 8px;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding:5px;
+  word-break: break-word;
+}
+
+/* FRONT */
+.optionFront {
+  background: white;
+  border: 2px solid #ccc;
+}
+
+/* BACK */
+.optionBack {
+  transform: rotateY(180deg);
+}
+.optionCardWrapper {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%; /* 🔥 CLAVE */
+}
+/* colores */
+.optionCorrect {
+  background: #22c55e;
+  border: 2px solid #178640;
+}
+
+.optionIncorrect {
+  background: #ef4444;
+  border: 2px solid #ad2424;
+  
+}
+.optionContentSize {
+  visibility: hidden;
+  padding: 12px;
+  text-align: center;
+
+  /* 🔥 ESTO define el tamaño */
+}
+  
+.questionSize {
+    visibility: hidden;
+    padding: 20px;
+    text-align: center;
+    line-height: 1.4;
+  }
 
 /* Celular */
 @media (max-width: 480px) {
@@ -148,11 +324,6 @@ flex-direction: column;
 
   }
 
-  .optionButton {
-    font-size: 14px;
-    padding: 12px;
-  }
-
   .header h1 {
     font-size: 1.4rem;
   }
@@ -161,10 +332,41 @@ flex-direction: column;
     font-size: 0.85rem;
   }
 
-  .grid {
-    gap: 10px;
+  
+  .flipInner {
+    position: absolute; /* ✅ mantiene el 3D bien */
+    top: 0;
+    left: 0;
     width: 100%;
-    margin-top: 10px;
+    height: 100%;
   }
 
+
+
+  .flipCard {
+    min-height: 160px;
+    height: auto;
+    width:350px;
+    position: relative;
+  }
+
+.flipInner {
+    position: absolute; /* ✅ sigue siendo absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .flipFace {
+    height: 100%;      /* ✅ mantiene el 3D */
+    text-align: center;
+  }
+
+ .flipFace h2 {
+    width: 100%;
+    word-break: break-word;
+    line-height: 1.4;
+  }
 }

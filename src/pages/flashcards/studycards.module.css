@@ -138,7 +138,7 @@
   .layout {
     flex-direction: column;
     /* ✅ apila todo */
-    padding-top: 0px;
+    padding-top: 40px;
   }
 
   /* 🔹 Sidebar oculto */
@@ -171,4 +171,8 @@
   .menuButton {
     display: block;
   }
+  
+.title {
+  margin-top: 5px;
+}
 }
