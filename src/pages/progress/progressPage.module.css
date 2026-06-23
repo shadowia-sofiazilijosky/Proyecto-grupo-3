@@ -25,16 +25,59 @@
   margin-bottom: 20px;
 }
 
+/* --- BURBUJA DE CONEXIÓN --- */
 .timerDisplay {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 10px;
-  border-radius: 20px;
-  max-width: 300px;
-  margin: 0 auto 20px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 30px;
+  padding: 12px 30px;
+  border-radius: 50px;
+  gap: 12px;
+  background: linear-gradient(90deg, rgba(233, 213, 255, 0.6) 0%, rgba(253, 230, 242, 0.6) 50%, rgba(254, 240, 138, 0.4) 100%);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(196, 181, 253, 0.8);
+  box-shadow: 0 0 25px rgba(167, 139, 250, 0.25);
 }
 
+.timerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timerText {
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.timerValue {
+  color: #1e293b;
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-right: 25px; 
+}
+
+.timerStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background-color: #4ade80; 
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.6); 
+}
+
+/* --- GRIDS PRINCIPALES --- */
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -43,43 +86,309 @@
 
 .bottomGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.6fr 1.2fr;
   gap: 20px;
 }
 
+/* --- TARJETAS EXACTAS AL DISEÑO --- */
 .glassCard {
-  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 24px;
-  padding: 24px;
+  padding: 20px 20px 25px 20px;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative; 
+  min-height: 220px;
+  /* 🟢 CRÍTICO: Evita que los gráficos pinchen el layout rompiendo el responsive */
+  min-width: 0;
+  overflow: hidden;
+}
+
+.iconBubble {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 100%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.wave {
-  height: 4px;
-  width: 70%;
-  margin: 15px auto 0;
-  background: linear-gradient(90deg, #a18cd1, #fbcfe8, #bfdbfe);
-  border-radius: 2px;
+.cardTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
+.cardNumber {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  line-height: 1;
+  margin: 5px 0;
+  transition: font-size 0.2s ease;
+}
+
+.cardSubtitle {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+/* --- HEADER Y FILTRO DEL GRÁFICO --- */
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+.chartHeader .cardTitle {
+  white-space: nowrap; 
+  margin: 0;
+}
+
+.filterSelect {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: #1e293b;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  width: auto;
+}
+
+.filterSelect:hover, .filterSelect:focus {
+  border-color: rgba(139, 92, 246, 0.8);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+/* --- ESTILOS PARA LA DISTRIBUCIÓN DE DIFICULTAD --- */
+.pieContent {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.pieWrapper {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  flex-shrink: 0;
+}
+
+.pieNumber {
+  font-size: 2rem;
+  font-weight: 800;
+  fill: #1e293b;
+}
+
+.pieLabelText {
+  font-size: 0.85rem;
+  fill: #64748b;
+  font-weight: 600;
+}
+
+.legendWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 15px;
+}
+
+.legendItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.legendLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.legendRight {
+  color: #64748b;
+  font-weight: 600;
+  white-space: nowrap; 
+  text-align: right;
+}
+
+.legendDivider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 0;
+  width: 100%;
+}
+
+/* --- FOOTER QUOTE CON BURBUJA --- */
 .footerQuote {
-  background: rgba(255, 255, 255, 0.3);
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 30px;
   border-radius: 20px;
-  text-align: center;
-  font-style: italic;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  text-align: left;
 }
 
-.centerText {
-  font-size: 24px;
-  font-weight: bold;
-  fill: #1f2937; /* Color oscuro para el número */
+.quoteBubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #e9d5ff 0%, #a855f7 100%);
+  border-radius: 50% 50% 50% 5px; 
+  box-shadow: 0 6px 15px rgba(168, 85, 247, 0.4);
+}
+
+.quoteText {
+  font-size: 1rem;
+  color: #475569;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   DISEÑO RESPONSIVE PERFECTO
+   ========================================================================== */
+
+/* 🟢 TABLETS (Pantallas medianas como iPads) */
+@media (max-width: 1024px) {
+  /* Pasamos las 3 tarjetas de arriba a 2 columnas para que tengan aire */
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* El gráfico lineal pasa a ocupar todo el ancho superior y la dona baja */
+  .bottomGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Achicamos un poco el número de las tarjetas para que no desborde */
+  .cardNumber {
+    font-size: 3.5rem;
+  }
+
+  .pieContent {
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
+/* 🟢 CELULARES (Pantallas chicas) */
+@media (max-width: 768px) {
+  .main {
+    padding-top: 100px;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+  }
+
+  /* Todo pasa a 1 sola columna bien limpia */
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Achicamos el número un poco más para pantallas de celulares */
+  .cardNumber {
+    font-size: 3.2rem;
+  }
+
+  /* El temporizador se apila vertical */
+  .timerDisplay {
+    flex-direction: column;
+    gap: 8px;
+    padding: 15px 25px;
+    border-radius: 25px;
+    text-align: center;
+  }
+
+  .timerValue {
+    margin-right: 0;
+  }
+
+  /* El título del gráfico y su filtro se mantienen en línea pero cómodos */
+  .chartHeader {
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .filterSelect {
+    width: auto;
+  }
+
+  /* El anillo de dificultad y sus textos se ponen uno abajo del otro */
+  .pieContent {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .legendWrapper {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* La frase motivacional se centra */
+  .footerQuote {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 20px;
+  }
+
+  .quoteBubble {
+    border-radius: 50%;
+  }
+}
+
+/* 🟢 CELULARES MUY CHICOS */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.8rem;
+  }
+  
+  .cardNumber {
+    font-size: 3rem;
+  }
 }
