@@ -1,0 +1,200 @@
+/* ==========================================================================
+   quiz.module.css (Estilo Glassmorphism Premium)
+   ========================================================================== */
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+/* Ajuste para que la tarjeta de resultados no se pegue al top */
+.container.finished {
+  padding-top: 100px; /* Baja la tarjeta 100px desde arriba */
+  align-items: center; /* Centra verticalmente */
+  display: flex;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 100px;
+}
+
+/* 🔹 TARJETA PREMIUM (Glassmorphism Limpio, Blanco Translúcido) */
+.glassCard {
+  position: relative;
+  /* Fondo blanco translúcido */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Borde fino minimalista (sin colores neón) */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  
+  border-radius: 30px;
+  padding: 40px;
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-family: "Lora", serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #1f2937; /* Color neutro oscuro en lugar de degradado */
+}
+
+/* 🔹 NUEVO ESTILO DE TEXTO DE INSTRUCCIÓN */
+.instructionText {
+  font-family: "Lora", serif;
+  color: #333; /* Negro suave/oscuro */
+  font-weight: 300; /* Fino */
+  font-size: 1.1rem;
+  margin-top: 25px;
+  text-align: center;
+}
+
+/* 🔹 CONTADORES ARRIBA A LA DERECHA */
+.counters {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.badgeHit, .badgeMiss {
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.badgeHit { background: #d1fae5; color: #065f46; }
+.badgeMiss { background: #fee2e2; color: #991b1b; }
+
+/* 🔹 TÍTULO Y TEXTO */
+.sparkleWrapper { font-size: 2rem; margin-bottom: 15px; }
+.questionText { font-size: 1.6rem; font-weight: 800; text-align: center; margin-bottom: 30px; }
+
+/* 🔹 GRID DE BOTONES 2x2 */
+.optionsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  width: 100%;
+  max-width: 760px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  align-items: stretch;
+}
+
+/* 🔹 BOTONES DE OPCIÓN CON DEGRADADO ARCOÍRIS PASTEL NEÓN */
+.optionBtn {
+  border: 2px solid transparent;
+  padding: 20px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #374151;
+  
+  /* Fondo degradado arcoíris pastel */
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+  
+  /* Sombra suave para profundidad */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.optionBtn:hover { 
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.correctOption { background: #d1fae5 !important; border-color: #34d399 !important; }
+.incorrectOption { background: #fee2e2 !important; border-color: #f87171 !important; }
+
+/* 🎯 HEADER Y PROGRESO */
+.header { 
+  margin-top: 80px; 
+  text-align: center; 
+  max-width: 900px; 
+}
+
+.headerTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.headerTitle {
+  font-family: "Lora", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  
+  background: linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.star {
+  font-size: 2rem;
+  color: #fbbf24;
+  filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5));
+}
+
+.header p { 
+  font-family: "Lora", serif; 
+  font-size: 1.1rem; 
+  color: #1f2937; 
+  font-weight: 400; 
+  line-height: 1.6; 
+  margin: 10px 20px; 
+}
+
+.progressContainer { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  margin-top: 10px; 
+  margin-bottom: 20px; 
+}
+
+.progressPill { 
+  background: linear-gradient(135deg, #fbcfe8, #ddd6fe, #bfdbfe);
+  color: #4b5563; 
+  padding: 8px 24px; 
+  border-radius: 999px; 
+  font-weight: 700; 
+  font-family: 'Inter', sans-serif; 
+  font-size: 1.1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .optionsContainer {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 350px;
+  }
+  .headerTitle { font-size: 1.4rem; }
+  .header p { font-size: 0.85rem; }
+}

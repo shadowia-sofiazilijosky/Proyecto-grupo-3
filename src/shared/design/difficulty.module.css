@@ -1,0 +1,23 @@
+/* todas */
+.all {
+    background: #d0e7ff;
+    border-color: #007bff;
+}
+
+/* fácil */
+.easy {
+    background: #f1fff3;
+    border-color: #4caf50;
+}
+
+/* medio */
+.medium {
+    background: #fff9e6;
+    border-color: #ffc107;
+}
+
+/* difícil */
+.hard {
+    background: #ffecec;
+    border-color: #f44336;
+}

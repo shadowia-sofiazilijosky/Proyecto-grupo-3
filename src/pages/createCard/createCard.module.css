@@ -1,0 +1,124 @@
+/* ==========================================================================
+   createCard.module.css (Unificación final)
+   ========================================================================== */
+
+/* Importamos las fuentes de tu Home */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 140px 20px 80px 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ─── Contenedor del título ─── */
+.headerContainer {
+  width: 100%;
+  max-width: 650px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* ─── TÍTULO CON DEGRADADO EXACTO (Estilo Home) ─── */
+.animatedTitle {
+  font-family: 'Lora', serif;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 500;
+  margin: 0 0 10px 0;
+  
+  /* El degradado de tu Home */
+  background: linear-gradient(135deg, #FDBA74 0%, #C084FC 50%, #93C5FD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.animatedSubtitle {
+  font-family: 'Lora', serif;
+  font-size: 1.4rem;
+  color: #334155;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ─── TARJETA PRINCIPAL (Vidrio) ─── */
+.formContainer {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 40px; 
+  display: flex;
+  flex-direction: column;
+  gap: 25px; 
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ─── LABELS ─── */
+.label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #475569;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ─── INPUTS Y TEXTAREAS ─── */
+.input, .textarea, .select, textarea, input, select {
+  font-family: 'Inter', sans-serif !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  color: #1E293B !important;
+  border-radius: 14px !important;
+  padding: 16px !important;
+  font-size: 1rem;
+  width: 100%;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+}
+
+/* ─── BOTÓN ─── */
+.submitButton {
+  width: 100%;
+  padding: 18px;
+  background: #0F172A !important;
+  color: white !important;
+  border-radius: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  filter: brightness(1.2);
+}
+
+/* ─── ESTRUCTURA ─── */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .row { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,251 @@
+/* TARJETA */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.title {
+  margin-top: 25px;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px; 
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.front {
+  border: none !important;
+  background: transparent !important;
+}
+
+.back {
+  background: transparent !important;
+  border: none !important;
+  transform: rotateY(180deg);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔹 BOTÓN TIPO GEMINI (GLASSMORPHISM) */
+.menuButton {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #334155;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  margin-top: 10px; 
+}
+
+.menuButton:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.05);
+}
+
+.studyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* 🔹 CONTENEDOR DEL BOTÓN */
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 10px;
+  z-index: 1002;
+}
+
+.emptyContainer {
+  height: calc(100vh - 139px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ─── ESTILOS PREMIUM PARA EL MODO ESTUDIO ─── */
+.animatedTitle {
+  font-family: 'Lora', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FDBA74 0%, #C084FC 50%, #93C5FD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 5px;
+}
+
+.rainbowCard {
+  background: linear-gradient(135deg, #fecaca, #fde68a, #bbf7d0, #bfdbfe, #ddd6fe) !important;
+  border-radius: 25px !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  border: 3px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+.cardQuestion {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-family: 'Inter', sans-serif;
+  font-size:28px;
+  font-weight: 900 !important;
+  color: #000000 !important;
+  padding: 40px !important;
+  text-align: center;
+}
+
+.answerContent {
+    font-family: 'Lora', serif;
+  font-size: clamp(1.0rem, 4vw, 1.5rem);
+    font-weight: 800 !important;
+    color: #000000 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.emptyBox {
+    width: 80% !important;
+    max-width: 600px;
+    padding: 60px 40px;
+    border-radius: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    color: #334155;
+    margin-top: 50px;
+}
+
+.emptyBox h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-family: 'Lora', serif;
+}
+
+.emptyBox p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* CONTENEDOR 3D */
+.cardWrapper {
+  width: 700px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+/* 🔹 MAIN: Contenedor central de estudio */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  position: relative; 
+}
+
+/* 🔹 LAYOUT */
+.layout {
+  display: flex;
+  padding-top: 90px; /* 👈 En compu arranca a los 90px */
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    flex-direction: column;
+    padding-top: 90px; /* 👈 CORRECCIÓN: Le damos los mismos 90px en celular para que no toque el NavBar */
+  }
+
+  .layout aside {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    transition: left 0.3s ease;
+    z-index: 999;
+  }
+
+  .layout aside.open {
+    left: 0;
+  }
+
+  .main {
+    width: 100%;
+    padding: 10px;
+  }
+
+  
+.cardWrapper {
+    width: 95%;
+    height: 520px;
+  }
+
+  
+  .title {
+    margin-top: 5px;
+  }
+  
+}
+
+/* 🔹 CONTADOR ESTILO PASTILLA (Para StudyCards) */
+.counterPill {
+  background: linear-gradient(135deg, #fbcfe8, #ddd6fe, #bfdbfe);
+  color: #374151; /* Color de texto oscuro para que se lea bien */
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: inline-block;
+  margin-bottom: 20px;
+}

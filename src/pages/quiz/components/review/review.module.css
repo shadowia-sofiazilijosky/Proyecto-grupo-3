@@ -1,0 +1,96 @@
+/* ==========================================================================
+   review.module.css (Estilo Glassmorphism Premium)
+   ========================================================================== */
+
+.reviewCard {
+  /* Contenedor principal translúcido */
+  background: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 600px;
+  
+  /* Borde neón arcoíris pastel brillante */
+  border: double 4px transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
+                    linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-family: "Lora", serif;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.answersList { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+}
+
+.bubble {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 20px;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* 🔹 Burbujas con colores de estado */
+.correct {
+  background: rgba(200, 247, 197, 0.7);
+  border: 2px solid #4caf50;
+}
+
+.incorrect {
+  background: rgba(247, 197, 197, 0.7);
+  border: 2px solid #f44336;
+}
+
+.question { 
+  font-family: "Lora", serif; 
+  font-weight: 700; 
+  margin-bottom: 10px; 
+  color: #1f2937; 
+}
+
+.details { 
+  font-size: 0.95rem; 
+  margin-bottom: 5px; 
+  color: #4b5563; 
+}
+
+.status { 
+  font-weight: 800; 
+  font-size: 0.85rem; 
+}
+
+.correct .status { color: #065f46; }
+.incorrect .status { color: #991b1b; }
+
+.backBtn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.backBtn:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}

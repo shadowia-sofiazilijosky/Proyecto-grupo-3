@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.page {
+  min-height: 100vh; /* 🔥 alto de toda la pantalla */
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1; /* 🔥 empuja el footer hacia abajo */
+}

@@ -1,0 +1,165 @@
+/* ==========================================================================
+   cardItem.module.css (Diseño de la Tarjeta Bicolor y Progreso)
+   ========================================================================== */
+
+/* ─── Contenedor Principal ─── */
+.card {
+  list-style: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden; /* Clave para que el color del header no se salga de los bordes redondos */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ─── Variables de Colores (Efecto Bicolor) ─── */
+/* Definimos el color fuerte para arriba y el color casi blanco para abajo */
+.difficulty_easy {
+  --header-bg: #d1fae5; 
+  --body-bg: #f0fdf4;   
+}
+.difficulty_medium {
+  --header-bg: #fef08a; 
+  --body-bg: #fefce8;   
+}
+.difficulty_hard {
+  --header-bg: #fecaca; 
+  --body-bg: #fef2f2;   
+}
+
+/* ─── Header (Parte Superior Fuerte) ─── */
+.header {
+  background-color: var(--header-bg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topic {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.difficulty {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.5); /* Fondo blanquecino para que resalte */
+  color: #1f2937;
+}
+
+/* ─── Body (Parte Inferior Clarita) ─── */
+.body {
+  background-color: var(--body-bg);
+  padding: 20px 20px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-grow: 1;
+}
+
+/* Cajas blancas de estilo Input para las preguntas */
+.bubbleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1f2937;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+/* ─── Barra de Progreso y Estadísticas ─── */
+.reviewSection {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reviewStats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.progressBarContainer {
+  width: 40%; /* Línea cortita a la izquierda como en la foto */
+  height: 4px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  width: 70%; /* Nivel de relleno */
+  background: linear-gradient(90deg, #a78bfa, #f472b6, #fb923c); /* Degradé pastel multicolor */
+  border-radius: 4px;
+}
+
+/* ─── Footer y Botones ─── */
+.footer {
+  background-color: var(--body-bg);
+  padding: 0 20px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconBtn {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #d1d5db;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 8px 12px; /* Botones apenas más rectangulares */
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editIcon:hover {
+  background-color: #d1fae5;
+  border-color: #34d399;
+  transform: scale(1.05);
+}
+
+.deleteIcon:hover {
+  background-color: #fee2e2;
+  border-color: #f87171;
+  transform: scale(1.05);
+}
+
+/* ─── Responsive (Celulares) ─── */
+@media (max-width: 768px) {
+  .header { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .reviewStats { flex-direction: column; gap: 4px; }
+  .progressBarContainer { width: 100%; } /* En celu la línea ocupa todo el ancho */
+}

@@ -1,0 +1,115 @@
+/* ==========================================================================
+   listcards.module.css (Unificación final)
+   ========================================================================== */
+
+/* Importamos las fuentes para que el estilo Lora funcione */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+/* ─── CONTENEDOR PRINCIPAL CON ESPACIO PARA NAVBAR ─── */
+.container {
+  width: 100%;
+  padding: 100px 20px 80px;
+  box-sizing: border-box;
+  text-align: left;
+  margin-top:25px;
+  display: flex;
+  justify-content: center;
+}
+
+.animatedTitle {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 600;
+  /* Un poquito más grueso para que absorba más color */
+  margin: 40px 0 20px 0;
+
+  /* Gradiente ultra intenso y saturado */
+  background: linear-gradient(90deg,
+      #ffac5e 0%,
+      /* Naranja intenso inicial */
+      #e879f9 35%,
+      /* Violeta/Rosa vibrante */
+      #818cf8 70%,
+      /* Violeta azulado */
+      #60a5fa 100%
+      /* Azul eléctrico final */
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  display: block;
+  /* Esto ayuda a que el degradado se vea más nítido en pantallas de alta resolución */
+  -webkit-text-stroke: 0.1px rgba(255, 255, 255, 0.1);
+}
+
+/* ─── GRID DE LISTADO ─── */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── OTROS ESTILOS ─── */
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.listSection {
+  margin:10px;
+  margin-top: 40px;
+}
+
+/* ─── TARJETA PRINCIPAL (Vidrio) ─── */
+.formContainer {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 40px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 1250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ─── RESPONSIVE (Celulares y Tablets) ─── */
+@media (max-width: 768px) {
+  .container {
+    margin-top:25px;
+    padding-top: 90px;
+    padding-left: 0;
+    padding-right: 0px;
+    padding-bottom: 40px;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+  }
+  .formContainer {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 20px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+}

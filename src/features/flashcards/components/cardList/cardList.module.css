@@ -1,0 +1,184 @@
+/* ==========================================================================
+   cardList.module.css (Lista, Filtros y Modales)
+   ========================================================================== */
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.filtersRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+/* ─── Contenedor General de todos los filtros ─── */
+.filters {
+  display: flex;
+  flex-direction: row; 
+  gap: 24px; /* Separación grande entre Materia y Dificultad */
+  align-items: center;
+}
+
+/* ─── Agrupa cada palabra con su respectiva cajita ─── */
+.filterGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px; /* Espacio chiquito entre el texto y la burbuja */
+}
+
+/* ─── Textos de "Filterss:" y "Dificultad:" ─── */
+.filterLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #111827; 
+  font-weight: 700; 
+}
+
+/* ─── Burbujas de los Selectores ─── */
+.filterGroup select {
+  padding: 10px 16px;
+  border-radius: 10px; 
+  border: 1px solid rgba(0, 0, 0, 0.06); 
+  background-color: #ffffff; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  outline: none;
+  color: #111827; 
+  font-weight: 600; 
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.filterGroup select:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); 
+}
+
+/* ─── Burbuja del Buscador ─── */
+.search input {
+  padding: 12px 20px 12px 40px; 
+  border-radius: 10px; 
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #ffffff; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  outline: none;
+  width: 280px; 
+  color: #111827; 
+  font-weight: 600; 
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.search input::placeholder {
+  color: #6b7280; 
+  font-weight: 500;
+}
+
+.search input:focus {
+  border-color: #a78bfa; 
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+/* ─── Modales Aesthetic ─── */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.15); 
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; 
+}
+
+.modalContent {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 24px 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+  animation: popIn 0.3s ease-out; 
+}
+
+.modalContent p {
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.modalActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.modalBtn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  flex: 1;
+}
+
+.btnYes { color: #15803d; }
+.btnYes:hover {
+  background: rgba(187, 247, 208, 1); 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(187, 247, 208, 0.5);
+}
+
+.btnNo { color: #be123c; }
+.btnNo:hover {
+  background: rgba(254, 205, 205, 1); 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(254, 205, 205, 0.5);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .filtersRow { flex-direction: column; align-items: stretch; gap: 15px; }
+  .filters { flex-direction: column; align-items: flex-start; gap: 15px; }
+  .filterGroup { width: 100%; }
+  .filterGroup select { flex-grow: 1; }
+  .search { width: 100%; }
+  .search input { width: 100%; box-sizing: border-box; }
+  .modalContent { padding: 20px; }
+  .modalBtn { padding: 12px 16px; }
+}
