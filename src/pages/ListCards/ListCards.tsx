@@ -10,7 +10,7 @@ const ListCards = () => {
     <div className={style.container}> 
       {/* Si toqué el lápiz para editar, muestro el componente de edición */}
       {editingId ? (
-        <section>
+        <section className={style.formContainer}>
           {/* Mantenemos el estilo de título degradado también aquí */}
           <h2 className={style.animatedTitle}>Editar Flashcard</h2>
           <EditFlashcard id={editingId} onDone={() => setEditingId(null)} />
