@@ -10,4 +10,5 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] })
   ],
   resolve: { alias: { "@": path.resolve(__dirname, "src") } },
+  base: '/Proyecto-grupo-3/',
 })
