@@ -1,6 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom';
-// Nota: Si el error de RootLayout persiste, borra esto, escribe @/shared/ 
-// y usa Ctrl + Espacio para elegir el archivo correcto.
 import { RootLayout } from "../shared/components/layout/RootLayout"; 
 import { HomePage } from "@/pages/home/HomePage";
 import { CreateCards } from '@/pages/createCard/CreateCards';
@@ -22,4 +20,7 @@ export const router = createBrowserRouter([
             { path: "progress", element: <ProgressPage /> },
         ],
     },
-]);
+], {
+    
+    basename: '/Proyecto-grupo-3/'
+});
