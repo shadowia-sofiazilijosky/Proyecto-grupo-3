@@ -197,7 +197,6 @@ export default function ProgressPage() {
             </select>
           </div> 
           
-          {/* TRUCO 99% y HEIGHT 220 APLICADOS AQUÍ */}
           <ResponsiveContainer width="99%" height={220}>
             <AreaChart data={dynamicChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
               <defs>
@@ -225,24 +224,21 @@ export default function ProgressPage() {
           </div>
 
           <div className={styles.pieContent}>
-            <div className={styles.pieWrapper}>
-              
-              {/* TRUCO 99% y HEIGHT 220 APLICADOS AQUÍ */}
-              <ResponsiveContainer width="99%" height={220}>
-                <PieChart>
-                  <Pie data={pieData} innerRadius={50} outerRadius={75} dataKey="value" stroke="none">
-                    {pieData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <text x="50%" y="45%" textAnchor="middle" dominantBaseline="middle" className={styles.pieNumber}>
-                    {totalCards}
-                  </text>
-                  <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" className={styles.pieLabelText}>
-                    tarjetas
-                  </text>
-                </PieChart>
-              </ResponsiveContainer>
+            {/* SOLUCIÓN DE RAÍZ: Centramos el contenedor y eliminamos ResponsiveContainer */}
+            <div className={styles.pieWrapper} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+              <PieChart width={220} height={220}>
+                <Pie data={pieData} innerRadius={50} outerRadius={75} dataKey="value" stroke="none" cx="50%" cy="50%">
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <text x="50%" y="45%" textAnchor="middle" dominantBaseline="middle" className={styles.pieNumber}>
+                  {totalCards}
+                </text>
+                <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" className={styles.pieLabelText}>
+                  tarjetas
+                </text>
+              </PieChart>
             </div> 
             
             <div className={styles.legendWrapper}>
