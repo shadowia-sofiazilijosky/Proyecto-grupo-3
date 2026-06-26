@@ -1,4 +1,6 @@
 import style from "./home.module.css";
+// Opción A: Importamos la imagen como un módulo
+import imagenCubos from "../../assets/cubos.png"; 
 
 export function HomePage() {
   return (
@@ -21,7 +23,8 @@ export function HomePage() {
 
         {/* Contenedor gráfico para los cubos */}
         <div className={style.heroGraphicContainer}>
-          <img src="/cubos.png" alt="Elementos 3D" className={style.heroImage} />
+          {/* Reemplazamos la ruta fija por la variable importada entre llaves */}
+          <img src={imagenCubos} alt="Elementos 3D" className={style.heroImage} />
         </div>
       </div>
 
@@ -52,7 +55,7 @@ export function HomePage() {
           <h3 className={style.cardTitle}>Consistencia gana</h3>
           <p className={style.cardText}>
             Diez minutos todos los días superan a una maratón semanal. El hábito
-            es la estrategia.
+            is la estrategia.
           </p>
         </article>
       </section>
