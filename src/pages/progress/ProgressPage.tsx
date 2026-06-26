@@ -25,7 +25,6 @@ export default function ProgressPage() {
   const cards = useFlashcardStore((s: FlashcardState) => s.flashcards);
   const quizHistory = useFlashcardStore((s: FlashcardState) => s.quizHistory);
 
-  // 🟢 CÁLCULO INTELIGENTE DE LA RACHA DE ESTUDIO
   const currentStreak = useMemo(() => {
     if (!quizHistory || quizHistory.length === 0) return 0;
 
@@ -198,24 +197,22 @@ export default function ProgressPage() {
             </select>
           </div> 
           
-          {/* CORRECCIÓN 1: Envolvemos el gráfico en un div con altura fija */}
-          <div style={{ width: '100%', height: 220 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={dynamicChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.4}/>
-                    <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="rgba(0,0,0,0.05)" />
-                <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tickFormatter={(tick) => `${tick}%`} tick={{ fontSize: 12, fill: '#64748b' }} domain={[0, 100]} ticks={[0, 25, 50, 75, 100]} />
-                <Tooltip cursor={{ stroke: '#8b5cf6', strokeWidth: 1, strokeDasharray: '3 3' }} />
-                <Area type="monotone" dataKey="value" stroke="#8b5cf6" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" dot={{ r: 5, fill: "#fff", stroke: "#8b5cf6", strokeWidth: 2 }} activeDot={{ r: 7, fill: "#8b5cf6", stroke: "#fff" }} />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
+          {/* TRUCO 99% y HEIGHT 220 APLICADOS AQUÍ */}
+          <ResponsiveContainer width="99%" height={220}>
+            <AreaChart data={dynamicChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <defs>
+                <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.4}/>
+                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+                </linearGradient>
+              </defs>
+              <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="rgba(0,0,0,0.05)" />
+              <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
+              <YAxis axisLine={false} tickLine={false} tickFormatter={(tick) => `${tick}%`} tick={{ fontSize: 12, fill: '#64748b' }} domain={[0, 100]} ticks={[0, 25, 50, 75, 100]} />
+              <Tooltip cursor={{ stroke: '#8b5cf6', strokeWidth: 1, strokeDasharray: '3 3' }} />
+              <Area type="monotone" dataKey="value" stroke="#8b5cf6" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" dot={{ r: 5, fill: "#fff", stroke: "#8b5cf6", strokeWidth: 2 }} activeDot={{ r: 7, fill: "#8b5cf6", stroke: "#fff" }} />
+            </AreaChart>
+          </ResponsiveContainer>
         </div>
 
         <div className={styles.glassCard} style={{ 
@@ -230,24 +227,22 @@ export default function ProgressPage() {
           <div className={styles.pieContent}>
             <div className={styles.pieWrapper}>
               
-              {/* CORRECCIÓN 2: Le damos altura en píxeles (220) igual que al de al lado en vez de "100%" */}
-              <div style={{ width: '100%', height: 220 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie data={pieData} innerRadius={50} outerRadius={75} dataKey="value" stroke="none">
-                      {pieData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <text x="50%" y="45%" textAnchor="middle" dominantBaseline="middle" className={styles.pieNumber}>
-                      {totalCards}
-                    </text>
-                    <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" className={styles.pieLabelText}>
-                      tarjetas
-                    </text>
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
+              {/* TRUCO 99% y HEIGHT 220 APLICADOS AQUÍ */}
+              <ResponsiveContainer width="99%" height={220}>
+                <PieChart>
+                  <Pie data={pieData} innerRadius={50} outerRadius={75} dataKey="value" stroke="none">
+                    {pieData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <text x="50%" y="45%" textAnchor="middle" dominantBaseline="middle" className={styles.pieNumber}>
+                    {totalCards}
+                  </text>
+                  <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" className={styles.pieLabelText}>
+                    tarjetas
+                  </text>
+                </PieChart>
+              </ResponsiveContainer>
             </div> 
             
             <div className={styles.legendWrapper}>
