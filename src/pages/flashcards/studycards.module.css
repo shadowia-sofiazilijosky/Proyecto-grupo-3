@@ -36,7 +36,6 @@
   text-align: center;
   padding: 30px;
   box-sizing: border-box;
-  /* 🔹 CORRECCIÓN: Eliminamos scroll y forzamos ruptura de texto largo */
   overflow: hidden;
   word-wrap: break-word;
   word-break: break-word;
@@ -132,17 +131,16 @@
   justify-content: center !important;
   align-items: center !important;
   font-family: 'Inter', sans-serif;
-  /* 🔹 CORRECCIÓN: Tamaño dinámico que se achica si el texto es muy largo */
   font-size: clamp(1rem, 4vw, 2.2rem) !important;
   font-weight: 900 !important;
   color: #000000 !important;
   padding: 40px !important;
   text-align: center;
+  line-height: 1.2;
 }
 
 .answerContent {
     font-family: 'Lora', serif;
-    /* 🔹 CORRECCIÓN: Tamaño dinámico que se achica si el texto es muy largo */
     font-size: clamp(0.8rem, 3.5vw, 1.8rem) !important;
     font-weight: 800 !important;
     color: #000000 !important;
@@ -152,6 +150,7 @@
     height: 100%;
     text-align: center;
     padding: 20px;
+    line-height: 1.2;
 }
 
 .emptyBox {
@@ -182,9 +181,11 @@
 
 /* CONTENEDOR 3D */
 .cardWrapper {
-  width: 700px;
+  width: 90%;          
+  max-width: 600px;     
   height: 400px;
   perspective: 1000px;
+  margin: 0 auto;       
 }
 
 /* 🔹 MAIN: Contenedor central de estudio */
