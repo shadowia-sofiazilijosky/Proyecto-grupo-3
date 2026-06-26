@@ -25,7 +25,7 @@
 }
 
 .cardFace {
-  position:absolute;
+  position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
@@ -128,7 +128,7 @@
   justify-content: center !important;
   align-items: center !important;
   font-family: 'Inter', sans-serif;
-  font-size:28px;
+  font-size: 2.2rem !important;
   font-weight: 900 !important;
   color: #000000 !important;
   padding: 40px !important;
@@ -137,7 +137,7 @@
 
 .answerContent {
     font-family: 'Lora', serif;
-  font-size: clamp(1.0rem, 4vw, 1.5rem);
+    font-size: 3rem !important;
     font-weight: 800 !important;
     color: #000000 !important;
     display: flex;
@@ -222,17 +222,14 @@
     padding: 10px;
   }
 
-  
-.cardWrapper {
-    width: 95%;
-    height: 520px;
+  .cardWrapper {
+    width: 90%;
+    height: 420px;
   }
-
   
   .title {
     margin-top: 5px;
   }
-  
 }
 
 /* 🔹 CONTADOR ESTILO PASTILLA (Para StudyCards) */

@@ -1,4 +1,4 @@
-import { useMemo, useRef, useEffect, useState } from "react";
+import { useMemo } from "react";
 import styles from "../../../../pages/flashcards/studycards.module.css";
 
 type Props = {
@@ -22,40 +22,6 @@ const StudyMain = ({
   onMenuClick,
   menuOpen
 }: Props) => {
-  const questionRef = useRef<HTMLDivElement>(null);
-  const [questionFontSize, setQuestionFontSize] = useState(24);
-  const answerRef = useRef<HTMLDivElement>(null);
-  const [answerFontSize, setAnswerFontSize] = useState(24);
-  useEffect(() => {
-    const el = questionRef.current;
-    if (!el) return;
-
-    let size = 28;
-
-    el.style.fontSize = "28px"; // ✅ RESET primero SIEMPRE
-
-    while (el.scrollHeight > el.clientHeight && size > 10) {
-      size -= 1;
-      el.style.fontSize = size + "px";
-    }
-
-    setQuestionFontSize(size);
-  }, [card.question, showAnswer]);
-  useEffect(() => {
-    const el = answerRef.current;
-    if (!el) return;
-
-    let size = 28;
-
-    el.style.fontSize = "28px";
-
-    while (el.scrollHeight > el.clientHeight && size > 10) {
-      size -= 1;
-      el.style.fontSize = size + "px";
-    }
-
-    setAnswerFontSize(size);
-  }, [card.answer, showAnswer]);
 
   const pastelColors = ["#fecaca", "#fde68a", "#bbf7d0", "#bfdbfe", "#ddd6fe", "#fbcfe8", "#c7d2fe"];
 
@@ -65,11 +31,11 @@ const StudyMain = ({
 
   return (
     <main className={styles.main}>
-
+      
       {!menuOpen && (
         <div className={styles.buttonContainer}>
-          <button
-            className={styles.menuButton}
+          <button 
+            className={styles.menuButton} 
             onClick={(e) => { e.stopPropagation(); onMenuClick(); }}
             title="Abrir barra lateral"
           >
@@ -89,42 +55,28 @@ const StudyMain = ({
           <div className={styles.counterPill}>
             {currentIndex + 1} / {total}
           </div>
+
           <div className={styles.studyContainer}>
-
-            <div className={styles.cardWrapper} onClick={handleClick}>
-
-              <div className={`${styles.card} ${showAnswer ? styles.flipped : ""}`}>
-
-                {/* FRONT */}
-                <div className={`${styles.cardFace} ${styles.front} ${styles.rainbowCard}`}>
-                  <div
-                    ref={questionRef}
-                    className={styles.cardQuestion}
-                    style={{ fontSize: questionFontSize }}
-                  >
-                    {card.question}
-                  </div>
+            <div className={`${styles.cardWrapper} ${styles.rainbowCard}`} onClick={handleClick}>
+              <div className={`${styles.cardInner} ${showAnswer ? styles.flipped : ""}`}>
+                
+                <div className={`${styles.cardFace} ${styles.front} ${styles.cardQuestion}`}>
+                  {card.question}
                 </div>
 
-                {/* BACK */}
-                <div
-                  className={`${styles.cardFace} ${styles.back} ${styles.rainbowCard}`}
-                  style={{ backgroundColor: randomColor }}
+                <div 
+                  className={`${styles.cardFace} ${styles.back}`}
+                  style={{ backgroundColor: showAnswer ? randomColor : "transparent" }}
                 >
-                  <div
-                    ref={answerRef}
-                    className={styles.answerContent}
-                    style={{ fontSize: answerFontSize }}
-                  >
+                  <div className={styles.answerContent}>
                     {card.answer}
                   </div>
                 </div>
 
               </div>
-
             </div>
-
           </div>
+
           <p className={styles.hint}>
             {showAnswer ? "Click para la siguiente" : "Pensá la respuesta y hacé click"}
           </p>

@@ -1,9 +1,9 @@
 /* ==========================================================================
-   result.module.css (Estilo Glassmorphism Premium)
+   result.module.css (Estilo Glassmorphism Premium - AJUSTE FINAL)
    ========================================================================== */
 
 .resultCard {
-  /* Estilo Glassmorphism con borde neón */
+  /* Estilo Glassmorphism base */
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -13,7 +13,7 @@
   max-width: 500px;
   text-align: center;
   
-  /* Borde neón arcoíris */
+  /* Borde neón arcoíris por defecto */
   border: double 2px transparent;
   background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
                     linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
@@ -22,6 +22,7 @@
   
   /* Animación de entrada */
   animation: fadeIn 0.5s ease;
+  transition: all 0.4s ease; /* Transición suave al cambiar de color */
 }
 
 @keyframes fadeIn {
@@ -46,41 +47,40 @@
   margin-bottom: 20px;
 }
 
-.statBox {
-  background: rgba(255, 255, 255, 0.4);
+/* --- ESTILO UNIFICADO PARA TODAS LAS BURBUJAS (statBox y percentageBox) --- */
+.statBox, .percentageBox {
+  background: rgba(255, 255, 255, 0.55) !important; /* Más blanquito para que resalte */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 15px;
-  border-radius: 15px;
+  border-radius: 20px; /* Bordes más redondos */
   font-family: 'Inter', sans-serif;
+  
+  /* Borde blanco sólido fino para definir la burbuja */
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); /* Sombra suave para volumen */
 }
 
-.statBox span {
+.statBox span, .percentageBox p {
   display: block;
   font-size: 0.9rem;
-  color: #555;
+  color: #475569; /* Gris oscuro para legibilidad */
   margin-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.statBox strong {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.percentageBox {
-  font-family: "Lora", serif;
-  margin-bottom: 30px;
-}
-
-.percentageBox p {
-  margin: 0;
-  font-size: 1rem;
-  color: #555;
-}
-
-.percentageBox strong {
-  font-size: 3rem;
-  color: #333;
+.statBox strong, .percentageBox strong {
+  font-size: 1.4rem;
+  color: #1e293b;
+  font-weight: 800;
   display: block;
 }
+
+/* Ajuste específico para el porcentaje */
+.percentageBox { margin-bottom: 30px; padding: 25px !important; }
+.percentageBox strong { font-size: 3rem !important; }
 
 .buttonGroup {
   display: flex;
@@ -110,4 +110,27 @@
     max-width: 300px;
     padding: 25px;
   }
+}
+
+/* --- CLASES DE COLORES CON MÁS INTENSIDAD (SOBRESCRIBEN BASE) --- */
+
+.greenTheme {
+  background: rgba(187, 247, 208, 0.6) !important;
+  border: 2px solid #86efac !important;
+  background-image: none !important;
+  box-shadow: 0 10px 30px rgba(134, 239, 172, 0.4);
+}
+
+.yellowTheme {
+  background: rgba(254, 252, 191, 0.6) !important;
+  border: 2px solid #fde047 !important;
+  background-image: none !important;
+  box-shadow: 0 10px 30px rgba(253, 224, 71, 0.4);
+}
+
+.redTheme {
+  background: rgba(254, 226, 226, 0.6) !important;
+  border: 2px solid #fca5a5 !important;
+  background-image: none !important;
+  box-shadow: 0 10px 30px rgba(252, 165, 165, 0.4);
 }
