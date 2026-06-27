@@ -26,28 +26,33 @@ const StudyMain = ({
   const [questionFontSize, setQuestionFontSize] = useState(24);
   const answerRef = useRef<HTMLDivElement>(null);
   const [answerFontSize, setAnswerFontSize] = useState(24);
+
+  // 1. PRIMERA CORRECCIÓN: Agregamos !card para evitar errores y usamos card?.question
   useEffect(() => {
-  if (showAnswer) return;
+    if (showAnswer || !card) return; 
 
-  const el = questionRef.current;
-  if (!el) return;
+    const el = questionRef.current;
+    if (!el) return;
 
-  let size = 28;
+    let size = 28;
 
-  requestAnimationFrame(() => {
-    el.style.fontSize = "28px";
+    requestAnimationFrame(() => {
+      el.style.fontSize = "28px";
 
-    while (el.scrollHeight > el.clientHeight && size > 10) {
-      size--;
-      el.style.fontSize = size + "px";
-    }
+      while (el.scrollHeight > el.clientHeight && size > 10) {
+        size--;
+        el.style.fontSize = size + "px";
+      }
 
-    setQuestionFontSize(size);
-  });
+      setQuestionFontSize(size);
+    });
 
-}, [card.question, showAnswer]);
+  }, [card?.question, showAnswer]);
 
+  // 2. SEGUNDA CORRECCIÓN: Igual aquí, salimos temprano si no hay tarjeta
   useEffect(() => {
+    if (!card) return;
+
     const el = answerRef.current;
     if (!el) return;
 
@@ -61,7 +66,7 @@ const StudyMain = ({
     }
 
     setAnswerFontSize(size);
-  }, [card.answer, showAnswer]);
+  }, [card?.answer, showAnswer]);
 
   const pastelColors = ["#fecaca", "#fde68a", "#bbf7d0", "#bfdbfe", "#ddd6fe", "#fbcfe8", "#c7d2fe"];
 
@@ -89,9 +94,9 @@ const StudyMain = ({
 
       <h2 className={styles.animatedTitle}>Modo Estudio</h2>
 
-      {hasCards ? (
+      {/* 3. TERCERA CORRECCIÓN: La guarda de seguridad principal */}
+      {hasCards && card ? (
         <>
-          {/* 🔥 AQUI HICE EL CAMBIO: cambié styles.counter por styles.counterPill */}
           <div className={styles.counterPill}>
             {currentIndex + 1} / {total}
           </div>
@@ -135,6 +140,11 @@ const StudyMain = ({
             {showAnswer ? "Click para la siguiente" : "Pensá la respuesta y hacé click"}
           </p>
         </>
+      ) : hasCards ? (
+        // Mostramos un estado de carga mientras React trae los datos de la tarjeta
+        <div className={styles.emptyContainer}>
+          <p style={{fontFamily: 'Inter', fontWeight: 600}}>Cargando tarjeta...</p>
+        </div>
       ) : (
         <div className={styles.emptyBox}>
           <h3>¡Ups!</h3>
