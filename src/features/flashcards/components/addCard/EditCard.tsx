@@ -50,45 +50,44 @@ export function EditFlashcard({ id, onDone }: EditFlashcardProps) {
 
   return (
     <form className={style.form} onSubmit={handleSubmit}>
-      <div className={style.formHeader}>
-        {/* HE ELIMINADO EL H2 DE "EDITAR FLASHCARD" AQUÍ */}
-        <p className={style.formSubtitle}>Modificá los datos de la tarjeta</p>
-      </div>
-
-      <div className={style.fields}>
+      
+      {/* Burbuja 1: Pregunta y Respuesta */}
+      <div className={style.bubbleGroup}>
         <div className={style.field}>
-          <label className={style.label} htmlFor="question">
-            Pregunta
-          </label>
+          <label className={style.label} htmlFor="question">Pregunta ❓</label>
           <textarea
             className={style.textarea}
             id="question"
             name="question"
             value={values.question}
             onChange={handleChange}
+            maxLength={300}
             required
           />
         </div>
 
         <div className={style.field}>
-          <label className={style.label} htmlFor="answer">
-            Respuesta
-          </label>
+          <label className={style.label} htmlFor="answer">Respuesta ✅</label>
           <textarea
             className={style.textarea}
             id="answer"
             name="answer"
             value={values.answer}
             onChange={handleChange}
+            maxLength={300}
             required
           />
+          <div className={style.charCounter}>
+            {values.answer.length} / 300
+          </div>
         </div>
+      </div>
 
+      {/* Burbuja 2: Tema y Dificultad */}
+      <div className={style.bubbleGroup}>
         <div className={style.row}>
           <div className={style.field}>
-            <label className={style.label} htmlFor="topic">
-              Tema
-            </label>
+            <label className={style.label} htmlFor="topic">Tema 📁</label>
             <input
               className={style.input}
               id="topic"
@@ -101,9 +100,7 @@ export function EditFlashcard({ id, onDone }: EditFlashcardProps) {
           </div>
 
           <div className={style.field}>
-            <label className={style.label} htmlFor="difficulty">
-              Dificultad
-            </label>
+            <label className={style.label} htmlFor="difficulty">Dificultad 📊</label>
             <select
               className={style.select}
               id="difficulty"
@@ -121,8 +118,7 @@ export function EditFlashcard({ id, onDone }: EditFlashcardProps) {
         </div>
       </div>
 
-      <button className={`${style.submit} ${style.submitEdit}`} type="submit">
-        <span className={style.submitIcon}>✓</span>
+      <button className={style.submit} type="submit">
         Guardar cambios
       </button>
     </form>
