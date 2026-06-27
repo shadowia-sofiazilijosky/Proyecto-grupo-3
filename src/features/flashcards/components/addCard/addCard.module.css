@@ -11,12 +11,12 @@
 }
 
 .formContainer {
-  width: 100%;
-  max-width: 600px;
+  width: 90%;          /* Ocupa casi todo el ancho en móviles */
+  max-width: 800px;    /* Permitimos que sea más ancho en escritorio */
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(20px);
-  padding: 40px;
+  padding: 50px;       /* Un poco más de aire interior para escritorio */
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);

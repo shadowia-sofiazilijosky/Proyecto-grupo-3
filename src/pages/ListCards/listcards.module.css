@@ -9,11 +9,8 @@
 /* ─── CONTENEDOR PRINCIPAL CON ESPACIO PARA NAVBAR ─── */
 .container {
   width: 100%;
-  padding: 100px 20px 80px; 
-  box-sizing: border-box;
-  text-align: left;
-  /* Espaciado del navbar */
-  padding-top: 40px; 
+  padding-top: 120px; 
+  padding-bottom: 80px;
   min-height: 100vh;
 }
 
