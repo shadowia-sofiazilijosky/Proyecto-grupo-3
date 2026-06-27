@@ -36,11 +36,6 @@ export function CreateFlashcard() {
   return (
     <form className={style.form} onSubmit={handleSubmit}>
       
-      {/* NOTA: Título y subtítulo eliminados de aquí para no duplicar.
-         Ahora viven en tu página CreateCards.tsx
-      */}
-
-      {/* Primer Burbuja: Pregunta y Respuesta */}
       <div className={style.bubbleGroup}>
         <div className={style.field}>
           <label className={style.label}>Pregunta ❓</label>
@@ -50,6 +45,7 @@ export function CreateFlashcard() {
             value={values.question}
             onChange={handleChange}
             placeholder="¿Qué querés recordar?"
+            maxLength={300}
             required
           />
         </div>
@@ -62,12 +58,16 @@ export function CreateFlashcard() {
             value={values.answer}
             onChange={handleChange}
             placeholder="La respuesta correcta..."
+            maxLength={300}
             required
           />
+          {/* Contador visual usando la clase CSS */}
+          <div className={style.charCounter}>
+            {values.answer.length} / 300
+          </div>
         </div>
       </div>
 
-      {/* Segunda Burbuja: Tema y Dificultad */}
       <div className={style.bubbleGroup}>
         <div className={style.row}>
           <div className={style.field}>
@@ -98,7 +98,6 @@ export function CreateFlashcard() {
         </div>
       </div>
 
-      {/* Botón Final */}
       <button className={style.submit} type="submit">
         + Crear tarjeta
       </button>
