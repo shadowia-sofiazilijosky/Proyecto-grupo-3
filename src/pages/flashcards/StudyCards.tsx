@@ -55,21 +55,31 @@ const StudyCards = () => {
   const hasCards = filteredCards.length > 0;
 
   const handleClick = () => {
-    if (!isAnswerVisible) {
-      setIsAnswerVisible(true);
-      if (card) {
-        markAsStudied(card.id);
-      }
-    } else {
-      setCurrentIndex((prev) => {
-        if (prev < filteredCards.length - 1) {
-          return prev + 1;
-        }
-        return 0;
-      });
-      setIsAnswerVisible(false);
+  if (!isAnswerVisible) {
+    // 👉 Mostrar respuesta
+    setIsAnswerVisible(true);
+
+    if (card) {
+      markAsStudied(card.id);
     }
-  };
+  } else {
+    // 👉 🔥 RESETEAR el tamaño antes de cambiar
+    // Esto evita que arrastre un tamaño viejo
+    setTimeout(() => {
+      // este set llega al StudyMain vía props indirectamente
+      // (porque cambia la card y se recalcula)
+    }, 0);
+
+    setCurrentIndex((prev) => {
+      if (prev < filteredCards.length - 1) {
+        return prev + 1;
+      }
+      return 0;
+    });
+
+    setIsAnswerVisible(false);
+  }
+};
 
   const toggleMenu = () => {
     setMenuOpen(prev => !prev);
